@@ -1,14 +1,25 @@
-import type { Metadata } from 'next'
-import { Inter, Playfair_Display } from 'next/font/google'
-import './globals.css'
-import React from 'react';
+import type { Metadata } from "next"
+import { Cormorant_Garamond, Montserrat } from 'next/font/google'
+import "./globals.css"
+import type React from "react"
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' })
+const cormorant = Cormorant_Garamond({ 
+  subsets: ["latin"], 
+  variable: "--font-cormorant",
+  weight: ["300", "400", "500", "600", "700"],
+  display: 'swap'
+})
+
+const montserrat = Montserrat({ 
+  subsets: ["latin"], 
+  variable: "--font-montserrat",
+  weight: ["300", "400", "500", "600", "700"],
+  display: 'swap'
+})
 
 export const metadata: Metadata = {
-  title: 'Verónica Zoto - Fonoaudióloga',
-  description: 'Servicios profesionales de fonoaudiología',
+  title: "Verónica Zoto - Fonoaudióloga",
+  description: "Servicios profesionales de fonoaudiología",
 }
 
 export default function RootLayout({
@@ -18,7 +29,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className={`${inter.variable} ${playfair.variable} font-sans`}>{children}</body>
+      <body className={`${cormorant.variable} ${montserrat.variable} font-sans`}>
+        {children}
+      </body>
     </html>
   )
 }

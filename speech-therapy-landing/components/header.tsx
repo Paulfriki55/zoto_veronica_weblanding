@@ -1,6 +1,6 @@
 "use client"
 
-import { Phone, Mail, MapPin, Calendar } from "lucide-react"
+import { Phone, Mail, MapPin, Calendar, Menu, X } from 'lucide-react'
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { useState, useEffect } from "react"
@@ -10,7 +10,10 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50)
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
+    }
+
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -23,47 +26,71 @@ export function Header() {
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
-          <Link href="/" className="text-2xl font-playfair font-bold gradient-text hover:opacity-80 transition-opacity">
+          {/* Logo */}
+          <Link
+            href="/"
+            className="text-2xl font-cormorant font-bold gradient-text hover:opacity-80 transition-opacity"
+          >
             Verónica Zoto
           </Link>
 
-          <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden">
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+          {/* Mobile Menu Button */}
+          <button 
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+          >
+            {menuOpen ? (
+              <X className="h-6 w-6 text-primary" />
+            ) : (
+              <Menu className="h-6 w-6 text-primary" />
+            )}
           </button>
 
-          <nav
-            className={`${menuOpen ? "flex" : "hidden"} md:flex flex-col md:flex-row absolute md:relative top-full left-0 w-full md:w-auto bg-white md:bg-transparent shadow-md md:shadow-none`}
+          {/* Navigation */}
+          <nav 
+            className={`${
+              menuOpen ? "flex" : "hidden"
+            } md:flex flex-col md:flex-row absolute md:relative top-full left-0 w-full md:w-auto bg-white md:bg-transparent shadow-md md:shadow-none transition-all duration-300`}
           >
             <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-6 p-4 md:p-0">
-              <div className="flex items-center space-x-2 text-sm hover-lift">
-                <Phone className="h-4 w-4 text-primary" />
-                <a href="tel:0995238223" className="hover:text-primary transition-colors">
+              {/* Contact Info */}
+              <div className="flex items-center space-x-2 text-sm hover-lift group">
+                <div className="p-2 bg-secondary rounded-full group-hover:bg-primary/10 transition-colors">
+                  <Phone className="h-4 w-4 text-primary" />
+                </div>
+                <a 
+                  href="tel:0995238223" 
+                  className="hover:text-primary transition-colors"
+                >
                   099 523 8223
                 </a>
               </div>
-              <div className="flex items-center space-x-2 text-sm hover-lift">
-                <Mail className="h-4 w-4 text-primary" />
-                <a href="mailto:lisbetveronik@hotmail.com" className="hover:text-primary transition-colors">
+
+              <div className="flex items-center space-x-2 text-sm hover-lift group">
+                <div className="p-2 bg-secondary rounded-full group-hover:bg-primary/10 transition-colors">
+                  <Mail className="h-4 w-4 text-primary" />
+                </div>
+                <a 
+                  href="mailto:lisbetveronik@hotmail.com" 
+                  className="hover:text-primary transition-colors"
+                >
                   lisbetveronik@hotmail.com
                 </a>
               </div>
-              <div className="flex items-center space-x-2 text-sm hover-lift">
-                <MapPin className="h-4 w-4 text-primary" />
+
+              <div className="flex items-center space-x-2 text-sm hover-lift group">
+                <div className="p-2 bg-secondary rounded-full group-hover:bg-primary/10 transition-colors">
+                  <MapPin className="h-4 w-4 text-primary" />
+                </div>
                 <span>Wilson Cueva y Héctor Pilco, Edén del Valle</span>
               </div>
             </div>
 
+            {/* Call to Action Button */}
             <Button
-              variant="default"
-              className="mt-4 md:mt-0 bg-primary hover:bg-primary/90 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              variant="outline"
+              className="mt-4 md:mt-0 md:ml-4 bg-secondary hover:bg-secondary/90 text-primary font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-primary/20"
               onClick={() => {
                 setMenuOpen(false)
                 window.location.href = "#contact"
@@ -78,4 +105,3 @@ export function Header() {
     </header>
   )
 }
-
