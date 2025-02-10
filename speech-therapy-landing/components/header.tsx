@@ -1,6 +1,6 @@
 "use client"
 
-import { Phone, Mail, MapPin, Calendar, Menu, X } from 'lucide-react'
+import { Phone, Mail, MapPin, Calendar, Menu, X } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { useState, useEffect } from "react"
@@ -27,28 +27,21 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <Link
-            href="/"
-            className="text-2xl font-cormorant font-bold gradient-text hover:opacity-80 transition-opacity"
-          >
+          <Link href="/" className="text-2xl font-serif font-bold gradient-text hover:opacity-80 transition-opacity">
             Verónica Zoto
           </Link>
 
           {/* Mobile Menu Button */}
-          <button 
+          <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
             aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
           >
-            {menuOpen ? (
-              <X className="h-6 w-6 text-primary" />
-            ) : (
-              <Menu className="h-6 w-6 text-primary" />
-            )}
+            {menuOpen ? <X className="h-6 w-6 text-primary" /> : <Menu className="h-6 w-6 text-primary" />}
           </button>
 
           {/* Navigation */}
-          <nav 
+          <nav
             className={`${
               menuOpen ? "flex" : "hidden"
             } md:flex flex-col md:flex-row absolute md:relative top-full left-0 w-full md:w-auto bg-white md:bg-transparent shadow-md md:shadow-none transition-all duration-300`}
@@ -59,10 +52,7 @@ export function Header() {
                 <div className="p-2 bg-secondary rounded-full group-hover:bg-primary/10 transition-colors">
                   <Phone className="h-4 w-4 text-primary" />
                 </div>
-                <a 
-                  href="tel:0995238223" 
-                  className="hover:text-primary transition-colors"
-                >
+                <a href="tel:0995238223" className="hover:text-primary transition-colors font-montserrat">
                   099 523 8223
                 </a>
               </div>
@@ -71,9 +61,9 @@ export function Header() {
                 <div className="p-2 bg-secondary rounded-full group-hover:bg-primary/10 transition-colors">
                   <Mail className="h-4 w-4 text-primary" />
                 </div>
-                <a 
-                  href="mailto:lisbetveronik@hotmail.com" 
-                  className="hover:text-primary transition-colors"
+                <a
+                  href="mailto:lisbetveronik@hotmail.com"
+                  className="hover:text-primary transition-colors font-montserrat"
                 >
                   lisbetveronik@hotmail.com
                 </a>
@@ -83,7 +73,7 @@ export function Header() {
                 <div className="p-2 bg-secondary rounded-full group-hover:bg-primary/10 transition-colors">
                   <MapPin className="h-4 w-4 text-primary" />
                 </div>
-                <span>Wilson Cueva y Héctor Pilco, Edén del Valle</span>
+                <span className="font-montserrat">Wilson Cueva y Héctor Pilco, Edén del Valle</span>
               </div>
             </div>
 
@@ -105,3 +95,4 @@ export function Header() {
     </header>
   )
 }
+

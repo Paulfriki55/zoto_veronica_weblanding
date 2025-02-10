@@ -1,4 +1,5 @@
 import { Check } from "lucide-react"
+import { WaveShape } from "./wave-shapes"
 
 export function Skills() {
   const skills = [
@@ -15,11 +16,13 @@ export function Skills() {
   ]
 
   return (
-    <section className="py-12 md:py-20 bg-white relative overflow-hidden">
-      <div className="absolute inset-0 leaf-pattern opacity-5" />
+    <section className="py-16 md:py-24 bg-[#C8EBDC] relative overflow-hidden">
+      <WaveShape.Top />
+      <WaveShape.LeafPattern />
+      <WaveShape.Curve />
 
-      <div className="container mx-auto px-4 relative">
-        <h2 className="text-3xl md:text-4xl font-playfair font-bold text-center mb-8 md:mb-12 gradient-text">
+      <div className="container mx-auto px-4 relative z-10">
+        <h2 className="text-3xl md:text-4xl font-playfair font-bold text-center mb-8 md:mb-12 text-[#8BA89B]">
           Habilidades y Especialidades
         </h2>
 
@@ -27,16 +30,18 @@ export function Skills() {
           {skills.map((skill, index) => (
             <div
               key={index}
-              className="flex items-center space-x-3 p-4 md:p-6 bg-white rounded-xl shadow-lg hover-lift group"
+              className="flex items-center space-x-3 p-4 md:p-6 bg-white/80 backdrop-blur-sm rounded-xl shadow-lg hover-lift group"
             >
-              <div className="p-2 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
-                <Check className="h-4 w-4 md:h-5 md:w-5 text-primary" />
+              <div className="p-2 bg-[#E5EDE9] rounded-full group-hover:bg-[#8BA89B]/20 transition-colors">
+                <Check className="h-4 w-4 md:h-5 md:w-5 text-[#8BA89B]" />
               </div>
-              <span className="text-sm md:text-base text-gray-700 font-medium">{skill}</span>
+              <span className="text-sm md:text-base text-gray-700 font-montserrat">{skill}</span>
             </div>
           ))}
         </div>
       </div>
+
+      <WaveShape.Bottom />
     </section>
   )
 }

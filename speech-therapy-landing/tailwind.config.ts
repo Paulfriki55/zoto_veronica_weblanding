@@ -40,6 +40,9 @@ const config = {
       fontFamily: {
         cormorant: ["var(--font-cormorant)"],
         montserrat: ["var(--font-montserrat)"],
+        playfair: ["var(--font-playfair-display)"],
+        sans: ["var(--font-montserrat)"],
+        serif: ["var(--font-playfair-display)"],
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -1,20 +1,26 @@
 import type { Metadata } from "next"
-import { Cormorant_Garamond, Montserrat } from 'next/font/google'
+import { Cormorant_Garamond, Montserrat, Playfair_Display } from "next/font/google"
 import "./globals.css"
 import type React from "react"
 
-const cormorant = Cormorant_Garamond({ 
-  subsets: ["latin"], 
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
   variable: "--font-cormorant",
   weight: ["300", "400", "500", "600", "700"],
-  display: 'swap'
+  display: "swap",
 })
 
-const montserrat = Montserrat({ 
-  subsets: ["latin"], 
+const montserrat = Montserrat({
+  subsets: ["latin"],
   variable: "--font-montserrat",
   weight: ["300", "400", "500", "600", "700"],
-  display: 'swap'
+  display: "swap",
+})
+
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair-display",
+  display: "swap",
 })
 
 export const metadata: Metadata = {
@@ -29,9 +35,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className={`${cormorant.variable} ${montserrat.variable} font-sans`}>
+      <body className={`${cormorant.variable} ${montserrat.variable} ${playfairDisplay.variable} font-sans`}>
         {children}
       </body>
     </html>
   )
 }
+
