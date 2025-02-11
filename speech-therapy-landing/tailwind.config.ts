@@ -25,16 +25,28 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#8BA89B", // Sage green
+          DEFAULT: "#74a998", // Verde Sage Oscuro (ajustado)
           foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "#E5EDE9", // Light sage
-          foreground: "#8BA89B",
+          DEFAULT: "#f0f7f4", // Verde Claro/Menta (ajustado)
+          foreground: "#74a998",
         },
         accent: {
-          DEFAULT: "#B7CEC3", // Mint accent
-          foreground: "#FFFFFF",
+          DEFAULT: "#d9e8e2", // Verde Menta Suave (para acentos)
+          foreground: "#74a998",
+        },
+        muted: { // Agregamos un color muted para fondos muy suaves
+          DEFAULT: "#f9fafb",
+          foreground: "#6b7280",
+        },
+        popover: {
+          DEFAULT: "#FFFFFF",
+          foreground: "#000000",
+        },
+        card: {
+          DEFAULT: "#FFFFFF",
+          foreground: "#000000",
         },
       },
       fontFamily: {
@@ -49,10 +61,23 @@ const config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      keyframes: { // Opcional: si quieres agregar keyframes para animaciones
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: { // Opcional: si quieres agregar animaciones predefinidas
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
+} satisfies Config;
 
-export default config
-
+export default config;

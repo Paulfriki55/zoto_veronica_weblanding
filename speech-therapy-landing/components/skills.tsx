@@ -16,13 +16,13 @@ export function Skills() {
   ]
 
   return (
-    <section className="py-16 md:py-24 bg-[#C8EBDC] relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-accent relative overflow-hidden"> {/* Fondo en accent */}
       <WaveShape.Top />
       <WaveShape.LeafPattern />
       <WaveShape.Curve />
 
       <div className="container mx-auto px-4 relative z-10">
-        <h2 className="text-3xl md:text-4xl font-playfair font-bold text-center mb-8 md:mb-12 text-[#8BA89B]">
+        <h2 className="text-3xl md:text-4xl font-playfair font-bold text-center mb-8 md:mb-12 text-primary"> {/* Título en primary */}
           Habilidades y Especialidades
         </h2>
 
@@ -30,10 +30,10 @@ export function Skills() {
           {skills.map((skill, index) => (
             <div
               key={index}
-              className="flex items-center space-x-3 p-4 md:p-6 bg-white/80 backdrop-blur-sm rounded-xl shadow-lg hover-lift group"
+              className="flex items-center space-x-3 p-4 md:p-6 bg-white/80 backdrop-blur-sm rounded-xl shadow-md hover-lift hover:shadow-lg hover:bg-white" // Sombra más sutil, hover bg blanco
             >
-              <div className="p-2 bg-[#E5EDE9] rounded-full group-hover:bg-[#8BA89B]/20 transition-colors">
-                <Check className="h-4 w-4 md:h-5 md:w-5 text-[#8BA89B]" />
+              <div className="p-2 bg-secondary rounded-full group-hover:bg-primary/20 transition-colors"> {/* Fondo iconos en secondary */}
+                <Check className="h-4 w-4 md:h-5 md:w-5 text-primary" />
               </div>
               <span className="text-sm md:text-base text-gray-700 font-montserrat">{skill}</span>
             </div>
@@ -43,6 +43,5 @@ export function Skills() {
 
       <WaveShape.Bottom />
     </section>
-  )
+  );
 }
-

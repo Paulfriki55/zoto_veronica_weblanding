@@ -1,6 +1,6 @@
 "use client"
 
-import { Phone, Mail, MapPin, Calendar, Menu, X } from "lucide-react"
+import { Phone, Mail, Calendar, Menu, X } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { useState, useEffect } from "react"
@@ -28,7 +28,7 @@ export function Header() {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link href="/" className="text-2xl font-serif font-bold gradient-text hover:opacity-80 transition-opacity">
-            Verónica Zoto
+            Lic. Verónica Zoto
           </Link>
 
           {/* Mobile Menu Button */}
@@ -69,12 +69,7 @@ export function Header() {
                 </a>
               </div>
 
-              <div className="flex items-center space-x-2 text-sm hover-lift group">
-                <div className="p-2 bg-secondary rounded-full group-hover:bg-primary/10 transition-colors">
-                  <MapPin className="h-4 w-4 text-primary" />
-                </div>
-                <span className="font-montserrat">Wilson Cueva y Héctor Pilco, Edén del Valle</span>
-              </div>
+              
             </div>
 
             {/* Call to Action Button */}
