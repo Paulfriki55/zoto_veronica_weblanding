@@ -25,15 +25,15 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#8BA89B", // Sage green
+          DEFAULT: "#7A9589", // Darker sage green
           foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "#E5EDE9", // Light sage
-          foreground: "#8BA89B",
+          DEFAULT: "#D4E2DC", // Slightly darker light sage
+          foreground: "#7A9589",
         },
         accent: {
-          DEFAULT: "#B7CEC3", // Mint accent
+          DEFAULT: "#A6BDB2", // Darker mint accent
           foreground: "#FFFFFF",
         },
       },

@@ -1,6 +1,6 @@
 "use client"
 
-import { Phone, Mail, MapPin, Calendar, Menu, X } from "lucide-react"
+import { MessageCircle, Mail, Calendar, Menu, X } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { useState, useEffect } from "react"
@@ -8,6 +8,11 @@ import { useState, useEffect } from "react"
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+
+  const whatsappNumber = "+593995238223"
+  const defaultMessage = "¡Hola! Solicito más información"
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(defaultMessage)}`
+  const emailAddress = "lisbetveronik@hotmail.com"
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,59 +33,43 @@ export function Header() {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link href="/" className="text-2xl font-serif font-bold gradient-text hover:opacity-80 transition-opacity">
-            Verónica Zoto
+            Lic. Verónica Zoto
           </Link>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors"
-            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
-          >
-            {menuOpen ? <X className="h-6 w-6 text-primary" /> : <Menu className="h-6 w-6 text-primary" />}
-          </button>
-
-          {/* Navigation */}
-          <nav
-            className={`${
-              menuOpen ? "flex" : "hidden"
-            } md:flex flex-col md:flex-row absolute md:relative top-full left-0 w-full md:w-auto bg-white md:bg-transparent shadow-md md:shadow-none transition-all duration-300`}
-          >
-            <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-6 p-4 md:p-0">
-              {/* Contact Info */}
-              <div className="flex items-center space-x-2 text-sm hover-lift group">
-                <div className="p-2 bg-secondary rounded-full group-hover:bg-primary/10 transition-colors">
-                  <Phone className="h-4 w-4 text-primary" />
+          {/* Navigation for desktop */}
+          <nav className="hidden md:flex items-center space-x-6">
+            <div className="flex items-center space-x-6">
+              {/* WhatsApp Button */}
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 text-sm hover:text-primary transition-all group"
+              >
+                <div className="p-2 bg-green-100 rounded-full group-hover:bg-green-200 transition-colors">
+                  <MessageCircle className="h-4 w-4 text-green-600" />
                 </div>
-                <a href="tel:0995238223" className="hover:text-primary transition-colors font-montserrat">
-                  099 523 8223
-                </a>
-              </div>
+                <span className="font-medium">Tienes alguna pregunta? Escribeme</span>
+              </a>
 
-              <div className="flex items-center space-x-2 text-sm hover-lift group">
-                <div className="p-2 bg-secondary rounded-full group-hover:bg-primary/10 transition-colors">
-                  <Mail className="h-4 w-4 text-primary" />
+              {/* Email Button */}
+              <a
+                href={`mailto:${emailAddress}`}
+                className="flex items-center space-x-2 text-sm hover:text-primary transition-all group"
+              >
+                <div className="p-2 bg-blue-100 rounded-full group-hover:bg-blue-200 transition-colors">
+                  <Mail className="h-4 w-4 text-blue-600" />
                 </div>
-                <a
-                  href="mailto:lisbetveronik@hotmail.com"
-                  className="hover:text-primary transition-colors font-montserrat"
-                >
-                  lisbetveronik@hotmail.com
-                </a>
-              </div>
-
-              <div className="flex items-center space-x-2 text-sm hover-lift group">
-                <div className="p-2 bg-secondary rounded-full group-hover:bg-primary/10 transition-colors">
-                  <MapPin className="h-4 w-4 text-primary" />
-                </div>
-                <span className="font-montserrat">Wilson Cueva y Héctor Pilco, Edén del Valle</span>
-              </div>
+                <span className="font-medium">Enviar Email</span>
+              </a>
             </div>
 
             {/* Call to Action Button */}
             <Button
               variant="outline"
-              className="mt-4 md:mt-0 md:ml-4 bg-secondary hover:bg-secondary/90 text-primary font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 border-primary/20"
+              className="bg-gradient-to-r from-primary/90 to-primary text-white font-semibold 
+                shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 
+                border-none px-6 py-2 rounded-full"
               onClick={() => {
                 setMenuOpen(false)
                 window.location.href = "#contact"
@@ -90,7 +79,47 @@ export function Header() {
               Agendar Cita
             </Button>
           </nav>
+
+          {/* Mobile menu button */}
+          <button className="md:hidden p-2 z-50 relative" onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
+
+        {/* Mobile menu */}
+        {menuOpen && (
+          <div className="md:hidden absolute right-4 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors"
+              onClick={() => setMenuOpen(false)}
+            >
+              <MessageCircle className="inline-block mr-2 h-4 w-4 text-green-600" />
+              WhatsApp
+            </a>
+            <a
+              href={`mailto:${emailAddress}`}
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors"
+              onClick={() => setMenuOpen(false)}
+            >
+              <Mail className="inline-block mr-2 h-4 w-4 text-blue-600" />
+              Email
+            </a>
+            <a
+              href="#contact"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors"
+              onClick={() => {
+                setMenuOpen(false)
+                window.location.href = "#contact"
+              }}
+            >
+              <Calendar className="inline-block mr-2 h-4 w-4 text-primary" />
+              Agendar Cita
+            </a>
+          </div>
+        )}
       </div>
     </header>
   )

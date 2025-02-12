@@ -9,17 +9,17 @@ const slides = [
   {
     title: "Terapia del Lenguaje Profesional",
     description: "Servicios especializados para mejorar la comunicación y calidad de vida",
-    image: "/imagen1.png",
+    image: "/imagen1.jpg",
   },
   {
     title: "Evaluación y Tratamiento Personalizado",
     description: "Enfoque individualizado para cada paciente",
-    image: "/imagen2.png",
+    image: "/imagen2.jpg",
   },
   {
     title: "Experiencia en Todas las Edades",
     description: "Atención a niños, adolescentes, adultos y adultos mayores",
-    image: "/imagen3.png",
+    image: "/imagen3.jpg",
   },
 ]
 
@@ -32,7 +32,18 @@ export function HeroCarousel() {
 
   useEffect(() => {
     if (!emblaApi) return
+
     emblaApi.on("select", () => setCurrentSlide(emblaApi.selectedScrollSnap()))
+
+    // Set up auto-play
+    const autoplayInterval = setInterval(() => {
+      emblaApi.scrollNext()
+    }, 6000)
+
+    // Cleanup interval on component unmount
+    return () => {
+      clearInterval(autoplayInterval)
+    }
   }, [emblaApi])
 
   return (
