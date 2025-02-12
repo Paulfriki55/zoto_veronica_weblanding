@@ -32,7 +32,18 @@ export function HeroCarousel() {
 
   useEffect(() => {
     if (!emblaApi) return
+
     emblaApi.on("select", () => setCurrentSlide(emblaApi.selectedScrollSnap()))
+
+    // Set up auto-play
+    const autoplayInterval = setInterval(() => {
+      emblaApi.scrollNext()
+    }, 6000)
+
+    // Cleanup interval on component unmount
+    return () => {
+      clearInterval(autoplayInterval)
+    }
   }, [emblaApi])
 
   return (
@@ -97,4 +108,3 @@ export function HeroCarousel() {
     </div>
   )
 }
-
