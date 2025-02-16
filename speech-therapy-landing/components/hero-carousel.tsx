@@ -10,16 +10,19 @@ const slides = [
     title: "Terapia del Lenguaje Profesional",
     description: "Servicios especializados para mejorar la comunicación y calidad de vida",
     image: "/imagen1.jpg",
+    pattern: "dots-pattern",
   },
   {
     title: "Evaluación y Tratamiento Personalizado",
     description: "Enfoque individualizado para cada paciente",
     image: "/imagen2.jpg",
+    pattern: "wave-pattern",
   },
   {
     title: "Experiencia en Todas las Edades",
     description: "Atención a niños, adolescentes, adultos y adultos mayores",
     image: "/imagen3.jpg",
+    pattern: "circle-pattern",
   },
 ]
 
@@ -56,6 +59,7 @@ export function HeroCarousel() {
             <div key={index} className="flex-[0_0_100%] min-w-0">
               <div className="relative h-[60vh] md:h-[80vh] w-full">
                 <div className="absolute inset-0">
+                  <div className={`absolute inset-0 ${slide.pattern} opacity-5 z-10`} />
                   <Image
                     src={slide.image || "/placeholder.svg"}
                     alt={slide.title}
@@ -66,10 +70,10 @@ export function HeroCarousel() {
                 </div>
                 <div className="relative h-full flex items-center justify-center">
                   <div className="text-center p-6 max-w-4xl mx-auto">
-                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-cormorant font-bold mb-6 tracking-wide">
+                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-cormorant font-bold mb-6 tracking-wide animate-fade-in">
                       {slide.title}
                     </h1>
-                    <p className="text-lg md:text-xl text-gray-700 font-montserrat tracking-wider">
+                    <p className="text-lg md:text-xl text-gray-700 font-montserrat tracking-wider animate-slide-up">
                       {slide.description}
                     </p>
                   </div>
