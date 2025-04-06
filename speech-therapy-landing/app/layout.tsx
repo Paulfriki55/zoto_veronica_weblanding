@@ -35,9 +35,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className={`${cormorant.variable} ${montserrat.variable} ${playfairDisplay.variable} font-sans`}>
-        {children}
-      </body>
+      <body className={`${cormorant.variable} ${montserrat.variable} ${playfairDisplay.variable}`}>{children}</body>
     </html>
   )
 }

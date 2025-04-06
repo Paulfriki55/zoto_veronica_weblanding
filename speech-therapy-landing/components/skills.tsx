@@ -1,138 +1,310 @@
-import { Check } from 'lucide-react'
+"use client"
+
+import { Check } from "lucide-react"
 import Link from "next/link"
+import { motion, useScroll, useTransform } from "framer-motion"
+import { useRef } from "react"
 
 export function Skills() {
+  const containerRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  })
+
+  const y = useTransform(scrollYProgress, [0, 1], [100, -100])
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.2,
+        duration: 0.7,
+        ease: "easeOut",
+      },
+    }),
+  }
+
   return (
-    <section className="py-16 md:py-24 bg-white relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-full">
-        <div className="absolute -left-32 top-1/2 -translate-y-1/2 w-64 h-64 bg-[#F5F7F6] rounded-full opacity-50"></div>
+    <section ref={containerRef} className="py-16 md:py-24 bg-white relative overflow-hidden">
+      {/* Elementos decorativos */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <motion.div
+          style={{ y }}
+          className="absolute -left-32 top-1/2 -translate-y-1/2 w-64 h-64 bg-[#F5F7F6] rounded-full opacity-50"
+        ></motion.div>
         <div className="absolute -right-32 bottom-0 w-64 h-64 bg-[#F5F7F6] rounded-full opacity-30"></div>
+
+        {/* Patrón de puntos */}
+        <div className="absolute top-20 right-20 w-40 h-40 dots-pattern opacity-10"></div>
+        <div className="absolute bottom-20 left-20 w-40 h-40 dots-pattern opacity-10"></div>
+
+        {/* Patrón de onda */}
+        <div className="absolute top-0 left-0 w-full h-20 wave-pattern opacity-5"></div>
+        <div className="absolute bottom-0 left-0 w-full h-20 wave-pattern opacity-5"></div>
       </div>
-      
+
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
           <div className="inline-block px-3 py-1 bg-[#F5F7F6] rounded-full text-sm text-[#8BA89B] mb-4">
             Especialidades
           </div>
-          
+
           <h2 className="text-4xl md:text-5xl font-serif mb-4">
-            Áreas de <span className="text-[#8BA89B]">especialización</span>
+            Áreas de{" "}
+            <span className="text-[#8BA89B] relative">
+              especialización
+              <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 8" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,5 Q50,0 100,5 T200,5" stroke="#8BA89B" strokeWidth="2" fill="none" />
+              </svg>
+            </span>
           </h2>
-          
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Me especializo en diversas áreas de la fonoaudiología para ofrecer un servicio
-            completo y personalizado.
-          </p>
-        </div>
-        
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-gray-600 max-w-2xl mx-auto"
+          >
+            Me especializo en diversas áreas de la fonoaudiología para ofrecer un servicio completo y personalizado.
+          </motion.p>
+        </motion.div>
+
         <div className="grid md:grid-cols-3 gap-6 mt-12">
           {/* Fonoaudiología Pediátrica */}
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+          <motion.div
+            custom={0}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={cardVariants}
+            whileHover={{ y: -10, boxShadow: "0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)" }}
+            className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 transition-all duration-300"
+          >
             <h3 className="text-xl font-bold mb-2">Fonoaudiología Pediátrica</h3>
             <p className="text-sm text-gray-500 mb-6">Especializada en niños de 2 a 7 años</p>
-            
+
             <ul className="space-y-4 mb-8">
-              <li className="flex items-start">
-                <Check className="h-5 w-5 text-[#8BA89B] mr-2 mt-0.5 flex-shrink-0" />
+              <motion.li
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.1 }}
+                className="flex items-start"
+              >
+                <div className="bg-[#F5F7F6] p-1 rounded-full mr-2 mt-0.5">
+                  <Check className="h-4 w-4 text-[#8BA89B]" />
+                </div>
                 <span className="text-gray-700">Evaluación del desarrollo del lenguaje</span>
-              </li>
-              <li className="flex items-start">
-                <Check className="h-5 w-5 text-[#8BA89B] mr-2 mt-0.5 flex-shrink-0" />
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 }}
+                className="flex items-start"
+              >
+                <div className="bg-[#F5F7F6] p-1 rounded-full mr-2 mt-0.5">
+                  <Check className="h-4 w-4 text-[#8BA89B]" />
+                </div>
                 <span className="text-gray-700">Trastornos del habla infantil</span>
-              </li>
-              <li className="flex items-start">
-                <Check className="h-5 w-5 text-[#8BA89B] mr-2 mt-0.5 flex-shrink-0" />
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+                className="flex items-start"
+              >
+                <div className="bg-[#F5F7F6] p-1 rounded-full mr-2 mt-0.5">
+                  <Check className="h-4 w-4 text-[#8BA89B]" />
+                </div>
                 <span className="text-gray-700">Dificultades de aprendizaje</span>
-              </li>
-              <li className="flex items-start">
-                <Check className="h-5 w-5 text-[#8BA89B] mr-2 mt-0.5 flex-shrink-0" />
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4 }}
+                className="flex items-start"
+              >
+                <div className="bg-[#F5F7F6] p-1 rounded-full mr-2 mt-0.5">
+                  <Check className="h-4 w-4 text-[#8BA89B]" />
+                </div>
                 <span className="text-gray-700">TDAH y trastornos del aprendizaje</span>
-              </li>
+              </motion.li>
             </ul>
-            
-            <Link 
-              href="/consulta"
-              className="block text-center py-2 px-4 bg-[#F5F7F6] text-[#8BA89B] font-medium rounded-md hover:bg-[#E5EDE9] transition-colors"
-            >
-              Consultar
-            </Link>
-          </div>
-          
+
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link
+                href="/consulta"
+                className="block text-center py-2 px-4 bg-[#F5F7F6] text-[#8BA89B] font-medium rounded-md hover:bg-[#E5EDE9] transition-colors"
+              >
+                Consultar
+              </Link>
+            </motion.div>
+          </motion.div>
+
           {/* Neurorehabilitación */}
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 relative">
+          <motion.div
+            custom={1}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={cardVariants}
+            whileHover={{ y: -10, boxShadow: "0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)" }}
+            className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 relative transition-all duration-300"
+          >
             <div className="absolute top-0 right-0 left-0">
-              <div className="bg-[#8BA89B] text-white text-sm py-1 px-4 rounded-t-xl w-32">
-                Principal
-              </div>
+              <div className="bg-[#8BA89B] text-white text-sm py-1 px-4 rounded-t-xl w-32">Principal</div>
             </div>
-            
+
             <h3 className="text-xl font-bold mb-2 mt-6">Neurorehabilitación</h3>
             <p className="text-sm text-gray-500 mb-6">Enfoque en condiciones neurológicas</p>
-            
+
             <ul className="space-y-4 mb-8">
-              <li className="flex items-start">
-                <Check className="h-5 w-5 text-[#8BA89B] mr-2 mt-0.5 flex-shrink-0" />
+              <motion.li
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.1 }}
+                className="flex items-start"
+              >
+                <div className="bg-[#F5F7F6] p-1 rounded-full mr-2 mt-0.5">
+                  <Check className="h-4 w-4 text-[#8BA89B]" />
+                </div>
                 <span className="text-gray-700">Afasia y trastornos del lenguaje</span>
-              </li>
-              <li className="flex items-start">
-                <Check className="h-5 w-5 text-[#8BA89B] mr-2 mt-0.5 flex-shrink-0" />
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 }}
+                className="flex items-start"
+              >
+                <div className="bg-[#F5F7F6] p-1 rounded-full mr-2 mt-0.5">
+                  <Check className="h-4 w-4 text-[#8BA89B]" />
+                </div>
                 <span className="text-gray-700">Disartria y apraxia</span>
-              </li>
-              <li className="flex items-start">
-                <Check className="h-5 w-5 text-[#8BA89B] mr-2 mt-0.5 flex-shrink-0" />
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+                className="flex items-start"
+              >
+                <div className="bg-[#F5F7F6] p-1 rounded-full mr-2 mt-0.5">
+                  <Check className="h-4 w-4 text-[#8BA89B]" />
+                </div>
                 <span className="text-gray-700">Rehabilitación post-ACV</span>
-              </li>
-              <li className="flex items-start">
-                <Check className="h-5 w-5 text-[#8BA89B] mr-2 mt-0.5 flex-shrink-0" />
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4 }}
+                className="flex items-start"
+              >
+                <div className="bg-[#F5F7F6] p-1 rounded-full mr-2 mt-0.5">
+                  <Check className="h-4 w-4 text-[#8BA89B]" />
+                </div>
                 <span className="text-gray-700">Trastornos cognitivo-comunicativos</span>
-              </li>
-              <li className="flex items-start">
-                <Check className="h-5 w-5 text-[#8BA89B] mr-2 mt-0.5 flex-shrink-0" />
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.5 }}
+                className="flex items-start"
+              >
+                <div className="bg-[#F5F7F6] p-1 rounded-full mr-2 mt-0.5">
+                  <Check className="h-4 w-4 text-[#8BA89B]" />
+                </div>
                 <span className="text-gray-700">Terapia de deglución</span>
-              </li>
+              </motion.li>
             </ul>
-            
-            <Link 
-              href="/consulta"
-              className="block text-center py-2 px-4 bg-[#8BA89B] text-white font-medium rounded-md hover:bg-[#7A9889] transition-colors"
-            >
-              Consultar
-            </Link>
-          </div>
-          
+
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link
+                href="/consulta"
+                className="block text-center py-2 px-4 bg-[#8BA89B] text-white font-medium rounded-md hover:bg-[#7A9889] transition-colors"
+              >
+                Consultar
+              </Link>
+            </motion.div>
+          </motion.div>
+
           {/* Audiología */}
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+          <motion.div
+            custom={2}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={cardVariants}
+            whileHover={{ y: -10, boxShadow: "0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)" }}
+            className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 transition-all duration-300"
+          >
             <h3 className="text-xl font-bold mb-2">Audiología</h3>
             <p className="text-sm text-gray-500 mb-6">Evaluación y tratamiento auditivo</p>
-            
+
             <ul className="space-y-4 mb-8">
-              <li className="flex items-start">
-                <Check className="h-5 w-5 text-[#8BA89B] mr-2 mt-0.5 flex-shrink-0" />
+              <motion.li
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.1 }}
+                className="flex items-start"
+              >
+                <div className="bg-[#F5F7F6] p-1 rounded-full mr-2 mt-0.5">
+                  <Check className="h-4 w-4 text-[#8BA89B]" />
+                </div>
                 <span className="text-gray-700">Evaluación auditiva completa</span>
-              </li>
-              <li className="flex items-start">
-                <Check className="h-5 w-5 text-[#8BA89B] mr-2 mt-0.5 flex-shrink-0" />
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 }}
+                className="flex items-start"
+              >
+                <div className="bg-[#F5F7F6] p-1 rounded-full mr-2 mt-0.5">
+                  <Check className="h-4 w-4 text-[#8BA89B]" />
+                </div>
                 <span className="text-gray-700">Adaptación de audífonos</span>
-              </li>
-              <li className="flex items-start">
-                <Check className="h-5 w-5 text-[#8BA89B] mr-2 mt-0.5 flex-shrink-0" />
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+                className="flex items-start"
+              >
+                <div className="bg-[#F5F7F6] p-1 rounded-full mr-2 mt-0.5">
+                  <Check className="h-4 w-4 text-[#8BA89B]" />
+                </div>
                 <span className="text-gray-700">Rehabilitación auditiva</span>
-              </li>
-              <li className="flex items-start">
-                <Check className="h-5 w-5 text-[#8BA89B] mr-2 mt-0.5 flex-shrink-0" />
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4 }}
+                className="flex items-start"
+              >
+                <div className="bg-[#F5F7F6] p-1 rounded-full mr-2 mt-0.5">
+                  <Check className="h-4 w-4 text-[#8BA89B]" />
+                </div>
                 <span className="text-gray-700">Terapia para acúfenos (tinnitus)</span>
-              </li>
+              </motion.li>
             </ul>
-            
-            <Link 
-              href="/consulta"
-              className="block text-center py-2 px-4 bg-[#F5F7F6] text-[#8BA89B] font-medium rounded-md hover:bg-[#E5EDE9] transition-colors"
-            >
-              Consultar
-            </Link>
-          </div>
+
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Link
+                href="/consulta"
+                className="block text-center py-2 px-4 bg-[#F5F7F6] text-[#8BA89B] font-medium rounded-md hover:bg-[#E5EDE9] transition-colors"
+              >
+                Consultar
+              </Link>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>
   )
 }
+

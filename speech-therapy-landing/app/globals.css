@@ -7,11 +7,20 @@
   --secondary: 245, 245, 240; /* #F5F5F0 - Blanco hueso */
   --accent: 152, 203, 196; /* #98CBC4 - Turquesa suave */
   --text: 72, 72, 72; /* #484848 - Gris oscuro más suave */
+  
+  /* Font variables */
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-display: var(--font-playfair-display);
+  --font-montserrat: var(--font-montserrat);
+  --font-cormorant: var(--font-cormorant);
+  --font-playfair-display: var(--font-playfair-display);
 }
 
 @layer base {
   body {
-    @apply bg-white text-gray-700 font-montserrat;
+    @apply bg-white text-gray-700;
+    font-family: var(--font-montserrat);
   }
   h1,
   h2,
@@ -19,15 +28,15 @@
   h4,
   h5,
   h6 {
-    @apply font-serif;
+    font-family: var(--font-serif);
   }
 }
 
+/* Animaciones y efectos */
 .hover-lift {
   @apply transition-transform duration-300 hover:-translate-y-1;
 }
 
-/* Animación suave para los elementos decorativos */
 @keyframes float {
   0%,
   100% {
@@ -42,7 +51,6 @@
   animation: float 6s ease-in-out infinite;
 }
 
-/* Efecto de desenfoque para fondos */
 .glass-effect {
   @apply bg-white/80 backdrop-blur-sm;
 }
@@ -57,6 +65,21 @@
   to { transform: translateY(0); opacity: 1; }
 }
 
+@keyframes slideInLeft {
+  from { transform: translateX(-50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
 .animate-fade-in {
   animation: fadeIn 1s ease-out;
 }
@@ -65,6 +88,19 @@
   animation: slideUp 1s ease-out;
 }
 
+.animate-slide-left {
+  animation: slideInLeft 1s ease-out;
+}
+
+.animate-slide-right {
+  animation: slideInRight 1s ease-out;
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s infinite;
+}
+
+/* Patrones decorativos */
 .dots-pattern {
   background-image: radial-gradient(#000 1px, transparent 1px);
   background-size: 20px 20px;
@@ -79,3 +115,36 @@
   background-size: 25px 25px;
 }
 
+.leaf-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23000000' fill-opacity='0.05'%3E%3Cpath d='M0 0h80v80H0V0zm20 20v40h40V20H20zm20 35a15 15 0 1 1 0-30 15 15 0 0 1 0 30z' opacity='.5'/%3E%3Cpath d='M15 15h50l-5 5H20v40l-5 5V15zm0 50h50V15L80 0v80H0l15-15zm32.07-32.07l3.54-3.54A15 15 0 0 1 29.4 50.6l3.53-3.53a10 10 0 1 0 14.14-14.14zM32.93 47.07a10 10 0 1 1 14.14-14.14L32.93 47.07z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Efectos de transición */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+.transition-colors {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Escala para hover */
+.hover\:scale-103:hover {
+  transform: scale(1.03);
+}
