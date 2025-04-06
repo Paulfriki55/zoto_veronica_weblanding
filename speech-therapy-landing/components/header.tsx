@@ -1,6 +1,6 @@
 "use client"
 
-import { MessageCircle, Mail, Calendar, Menu, X } from "lucide-react"
+import { Phone } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { useState, useEffect } from "react"
@@ -8,11 +8,6 @@ import { useState, useEffect } from "react"
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-
-  const whatsappNumber = "+593995238223"
-  const defaultMessage = "¡Hola! Solicito más información"
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(defaultMessage)}`
-  const emailAddress = "lisbetveronik@hotmail.com"
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,98 +21,125 @@ export function Header() {
   return (
     <header
       className={`w-full fixed top-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/90 backdrop-blur-md shadow-md" : "bg-transparent"
+        scrolled ? "bg-white/95 backdrop-blur-md shadow-sm" : "bg-white"
       }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
-          {/* Logo */}
-          <Link href="/" className="text-2xl font-serif font-bold gradient-text hover:opacity-80 transition-opacity">
-            Verónica Zoto
+          {/* Logo and Name */}
+          <Link href="/" className="flex items-center gap-2">
+            <div className="h-8 w-8 rounded-full bg-[#8BA89B] flex items-center justify-center text-white font-bold">
+              V
+            </div>
+            <div>
+              <h1 className="text-xl font-semibold">
+                Verónica <span className="font-bold">Zoto</span>
+              </h1>
+              <p className="text-xs text-gray-600 -mt-1">Fonoaudióloga</p>
+            </div>
           </Link>
 
           {/* Navigation for desktop */}
           <nav className="hidden md:flex items-center space-x-6">
-            <div className="flex items-center space-x-6">
-              {/* WhatsApp Button */}
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-2 text-sm hover:text-primary transition-all group"
-              >
-                <div className="p-2 bg-green-100 rounded-full group-hover:bg-green-200 transition-colors">
-                  <MessageCircle className="h-4 w-4 text-green-600" />
-                </div>
-                <span className="font-medium">Tienes alguna pregunta? Escribeme</span>
-              </a>
-
-              {/* Email Button */}
-              <a
-                href={`mailto:${emailAddress}`}
-                className="flex items-center space-x-2 text-sm hover:text-primary transition-all group"
-              >
-                <div className="p-2 bg-blue-100 rounded-full group-hover:bg-blue-200 transition-colors">
-                  <Mail className="h-4 w-4 text-blue-600" />
-                </div>
-                <span className="font-medium">Enviar Email</span>
-              </a>
-            </div>
-
-            {/* Call to Action Button */}
-            <Button
-              variant="outline"
-              className="bg-gradient-to-r from-primary/90 to-primary text-white font-semibold 
-                shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 
-                border-none px-6 py-2 rounded-full"
-              onClick={() => {
-                setMenuOpen(false)
-                window.location.href = "#contact"
-              }}
-            >
-              <Calendar className="mr-2 h-4 w-4" />
-              Agendar Cita
-            </Button>
+            <Link href="/servicios" className="text-sm font-medium hover:text-[#8BA89B] transition-colors">
+              Servicios
+            </Link>
+            <Link href="/experiencia" className="text-sm font-medium hover:text-[#8BA89B] transition-colors">
+              Experiencia
+            </Link>
+            <Link href="/especialidades" className="text-sm font-medium hover:text-[#8BA89B] transition-colors">
+              Especialidades
+            </Link>
+            <Link href="/testimonios" className="text-sm font-medium hover:text-[#8BA89B] transition-colors">
+              Testimonios
+            </Link>
+            <Link href="/galeria" className="text-sm font-medium hover:text-[#8BA89B] transition-colors">
+              Galería
+            </Link>
+            <Link href="/contacto" className="text-sm font-medium hover:text-[#8BA89B] transition-colors">
+              Contacto
+            </Link>
           </nav>
 
+          {/* Call to Action Button */}
+          <Button className="hidden md:flex items-center gap-2 bg-[#8BA89B] hover:bg-[#7A9889] text-white rounded-md px-4 py-2">
+            <Phone className="h-4 w-4" />
+            <span className="font-medium">Agendar Cita</span>
+          </Button>
+
           {/* Mobile menu button */}
-          <button className="md:hidden p-2 z-50 relative" onClick={() => setMenuOpen(!menuOpen)}>
-            {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          <button className="md:hidden p-2" onClick={() => setMenuOpen(!menuOpen)}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d={menuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+              />
+            </svg>
           </button>
         </div>
 
         {/* Mobile menu */}
         {menuOpen && (
-          <div className="md:hidden absolute right-4 mt-2 py-2 w-48 bg-white rounded-md shadow-xl z-20">
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors"
-              onClick={() => setMenuOpen(false)}
-            >
-              <MessageCircle className="inline-block mr-2 h-4 w-4 text-green-600" />
-              WhatsApp
-            </a>
-            <a
-              href={`mailto:${emailAddress}`}
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors"
-              onClick={() => setMenuOpen(false)}
-            >
-              <Mail className="inline-block mr-2 h-4 w-4 text-blue-600" />
-              Email
-            </a>
-            <a
-              href="#contact"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors"
-              onClick={() => {
-                setMenuOpen(false)
-                window.location.href = "#contact"
-              }}
-            >
-              <Calendar className="inline-block mr-2 h-4 w-4 text-primary" />
-              Agendar Cita
-            </a>
+          <div className="md:hidden py-4 border-t">
+            <div className="flex flex-col space-y-3">
+              <Link
+                href="/servicios"
+                className="text-sm font-medium hover:text-[#8BA89B] transition-colors"
+                onClick={() => setMenuOpen(false)}
+              >
+                Servicios
+              </Link>
+              <Link
+                href="/experiencia"
+                className="text-sm font-medium hover:text-[#8BA89B] transition-colors"
+                onClick={() => setMenuOpen(false)}
+              >
+                Experiencia
+              </Link>
+              <Link
+                href="/especialidades"
+                className="text-sm font-medium hover:text-[#8BA89B] transition-colors"
+                onClick={() => setMenuOpen(false)}
+              >
+                Especialidades
+              </Link>
+              <Link
+                href="/testimonios"
+                className="text-sm font-medium hover:text-[#8BA89B] transition-colors"
+                onClick={() => setMenuOpen(false)}
+              >
+                Testimonios
+              </Link>
+              <Link
+                href="/galeria"
+                className="text-sm font-medium hover:text-[#8BA89B] transition-colors"
+                onClick={() => setMenuOpen(false)}
+              >
+                Galería
+              </Link>
+              <Link
+                href="/contacto"
+                className="text-sm font-medium hover:text-[#8BA89B] transition-colors"
+                onClick={() => setMenuOpen(false)}
+              >
+                Contacto
+              </Link>
+              <Button
+                className="flex items-center justify-center gap-2 bg-[#8BA89B] hover:bg-[#7A9889] text-white rounded-md px-4 py-2 w-full"
+                onClick={() => setMenuOpen(false)}
+              >
+                <Phone className="h-4 w-4" />
+                <span className="font-medium">Agendar Cita</span>
+              </Button>
+            </div>
           </div>
         )}
       </div>
