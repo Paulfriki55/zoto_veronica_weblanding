@@ -14,7 +14,7 @@ export function Start() {
   const y = useTransform(scrollYProgress, [0, 1], [50, -50])
 
   return (
-    <section ref={containerRef} className="pt-24 pb-16 md:py-24 relative overflow-hidden">
+    <section ref={containerRef} className="pt-24 pb-12 md:py-20 relative overflow-hidden">
       {/* Elementos decorativos */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <motion.div
@@ -34,25 +34,42 @@ export function Start() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           {/* Contenido - Lado izquierdo */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-6"
-          >
-            <div className="inline-block px-3 py-1 bg-[#F5F7F6] rounded-full text-sm text-[#8BA89B] mb-2">
-              Fonoaudióloga Profesional
-            </div>
+          <div className="space-y-6">
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="space-y-2"
+            >
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif">
+                Verónica{" "}
+                <span className="text-[#8BA89B] relative">
+                  Zoto
+                  <svg
+                    className="absolute -bottom-2 left-0 w-full"
+                    viewBox="0 0 200 8"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M0,5 Q50,0 100,5 T200,5" stroke="#8BA89B" strokeWidth="2" fill="none" />
+                  </svg>
+                </span>
+              </h1>
+              <p className="text-gray-600">Fonoaudióloga | Quito, Pichincha, Ecuador</p>
+            </motion.div>
 
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif">
-              Verónica{" "}
-              <span className="text-[#8BA89B] relative">
-                Zoto
-                <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 8" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M0,5 Q50,0 100,5 T200,5" stroke="#8BA89B" strokeWidth="2" fill="none" />
-                </svg>
-              </span>
-            </h1>
+            {/* Imagen para móvil - entre título y texto */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="md:hidden relative h-[400px] overflow-hidden rounded-2xl shadow-lg"
+            >
+              <Image src="/perfil.png" alt="Verónica Zoto - Fonoaudióloga" fill className="object-cover" priority />
+
+              {/* Elementos decorativos sobre la imagen */}
+              <div className="absolute -bottom-10 -right-10 w-20 h-20 bg-[#F5F7F6] rounded-full opacity-50"></div>
+              <div className="absolute -top-5 -left-5 w-10 h-10 border-2 border-[#8BA89B] rounded-full opacity-70"></div>
+            </motion.div>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -60,49 +77,47 @@ export function Start() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-gray-600 leading-relaxed"
             >
-              Soy una fonoaudióloga con amplia experiencia en la evaluación,
-              diagnóstico e intervención de trastornos del lenguaje, voz, habla y
-              comunicación en diversas poblaciones. Mi carrera se ha enfocado
-              en proporcionar atención integral y personalizada, tanto en niños
-              como en adultos mayores, adaptando mis técnicas terapéuticas a
-              las necesidades específicas de cada paciente. Estoy comprometida
-              con el trabajo multidisciplinario y la mejora continua de mis
-              habilidades para ofrecer una atención de calidad.
+              Con una sólida trayectoria en evaluación, diagnóstico e intervención de trastornos del lenguaje, voz,
+              habla y comunicación, brindo atención integral y personalizada a niños y adultos. Mi enfoque se basa en
+              técnicas terapéuticas adaptadas a las necesidades específicas de cada paciente, trabajando en equipo para
+              ofrecer resultados de calidad.
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-[#6A8579] font-medium text-lg leading-relaxed"
+            >
+              ¡Descubre un cuidado profesional comprometido con tu bienestar comunicativo!
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="pt-4"
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="pt-2"
             >
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-[#8BA89B] hover:bg-[#7A9889] text-white font-medium py-3 px-6 rounded-lg transition-colors"
+                className="bg-[#8BA89B] hover:bg-[#7A9889] text-white font-medium py-2.5 px-5 rounded-lg transition-colors"
               >
                 Conoce más
               </motion.button>
             </motion.div>
-          </motion.div>
+          </div>
 
-          {/* Imagen - Lado derecho */}
+          {/* Imagen - Lado derecho (solo visible en desktop) */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="relative"
+            className="relative hidden md:block"
           >
-            <div className="relative h-[400px] md:h-[500px] overflow-hidden rounded-2xl shadow-xl">
-              {/* Aquí iría la imagen de la profesional */}
-              <Image
-                src="/placeholder.svg?height=500&width=400"
-                alt="Verónica Zoto - Fonoaudióloga"
-                fill
-                className="object-cover"
-                priority
-              />
-              
+            <div className="relative h-[500px] overflow-hidden rounded-2xl shadow-xl">
+              <Image src="/perfil.png" alt="Verónica Zoto - Fonoaudióloga" fill className="object-cover" priority />
+
               {/* Elementos decorativos sobre la imagen */}
               <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#F5F7F6] rounded-full opacity-50"></div>
               <div className="absolute -top-5 -left-5 w-20 h-20 border-4 border-[#8BA89B] rounded-full opacity-70"></div>
@@ -113,3 +128,4 @@ export function Start() {
     </section>
   )
 }
+
