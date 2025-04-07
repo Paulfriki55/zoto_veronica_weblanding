@@ -5,6 +5,8 @@ import { HeroCarousel } from "@/components/hero-carousel"
 import { About } from "@/components/about"
 import { Skills } from "@/components/skills"
 import { Contact } from "@/components/contact"
+import { Start } from "@/components/start"
+import { Footer } from "@/components/footer"
 import { useEffect } from "react"
 import { motion } from "framer-motion"
 
@@ -37,19 +39,23 @@ export default function Home() {
       className="min-h-screen"
     >
       <Header />
-  <section id="hero">
-    <HeroCarousel />
-  </section>
-  <section id="about">
-    <About />
-  </section>
-  <section id="skills">
-    <Skills />
-  </section>
-  <section id="contact">
-    <Contact />
-  </section>
-</motion.main>
+      <section id="start">
+        <Start />
+      </section>
+      <section id="hero">
+        <HeroCarousel />
+      </section>
+      <section id="about">
+        <About />
+      </section>
+      <section id="skills">
+        <Skills />
+      </section>
+      <section id="contact">
+        <Contact />
+      </section>
+      <Footer />
+    </motion.main>
   )
 }
 

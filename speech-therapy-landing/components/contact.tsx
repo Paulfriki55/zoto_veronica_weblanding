@@ -74,7 +74,7 @@ export function Contact() {
               className="bg-white/20 backdrop-blur-sm rounded-lg p-4 flex items-center transform transition-all duration-300"
             >
               <Phone className="h-5 w-5 text-white mr-4" />
-              <span className="text-white">+593 98 765 4321</span>
+              <span className="text-white">+593 99 523 8223</span>
             </motion.div>
 
             {/* Email */}
@@ -138,7 +138,7 @@ export function Contact() {
 
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
-                href="https://wa.me/593987654321"
+                href="https://wa.me/593995238223"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-transparent border border-white text-white font-medium py-3 px-6 rounded-lg hover:bg-white/10 transition-colors inline-block w-full sm:w-auto"
