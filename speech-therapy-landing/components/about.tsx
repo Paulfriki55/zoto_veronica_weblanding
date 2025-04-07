@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowRight, MessageSquare, Ear, Brain } from "lucide-react"
+import { ArrowRight, MessageSquare, Ear, Brain } from 'lucide-react'
 import Link from "next/link"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
@@ -29,30 +29,33 @@ export function About() {
 
   return (
     <section ref={containerRef} className="py-16 md:py-24 relative overflow-hidden">
+      {/* Divisor ondulado superior */}
+      <div className="absolute top-0 left-0 right-0 h-20 overflow-hidden">
+        <svg
+          className="absolute top-0 w-full h-auto"
+          viewBox="0 0 1440 74"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,0 L1440,0 L1440,37 C1200,0 960,74 720,37 C480,0 240,74 0,37 Z"
+            fill="#8BA89B"
+            fillOpacity="0.1"
+          />
+        </svg>
+      </div>
+
       {/* Elementos decorativos */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <motion.div
           style={{ y }}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#F5F7F6] rounded-full opacity-50"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#8BA89B] rounded-full opacity-10"
         ></motion.div>
 
         {/* Patrón de puntos */}
         <div className="absolute top-20 right-20 w-40 h-40 dots-pattern opacity-10"></div>
         <div className="absolute bottom-20 left-20 w-40 h-40 dots-pattern opacity-10"></div>
-
-        {/* Patrón de onda */}
-        <svg
-          className="absolute bottom-0 left-0 w-full"
-          viewBox="0 0 1440 120"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0,64L60,80C120,96,240,128,360,128C480,128,600,96,720,85.3C840,75,960,85,1080,90.7C1200,96,1320,96,1380,96L1440,96L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
-            fill="#F5F7F6"
-            fillOpacity="0.3"
-          />
-        </svg>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -62,7 +65,7 @@ export function About() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-12"
         >
-          <div className="inline-block px-3 py-1 bg-[#F5F7F6] rounded-full text-sm text-[#8BA89B] mb-4">Servicios</div>
+          <div className="inline-block px-3 py-1 bg-[#8BA89B]/20 rounded-full text-sm text-[#8BA89B] mb-4">Servicios</div>
 
           <h2 className="text-4xl md:text-5xl font-serif mb-6">
             Servicios{" "}
@@ -103,7 +106,7 @@ export function About() {
               <motion.div
                 whileHover={{ rotate: 10, scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                className="w-16 h-16 rounded-full bg-[#F5F7F6] flex items-center justify-center"
+                className="w-16 h-16 rounded-full bg-[#8BA89B]/20 flex items-center justify-center"
               >
                 <MessageSquare className="h-6 w-6 text-[#8BA89B]" />
               </motion.div>
@@ -142,7 +145,7 @@ export function About() {
               <motion.div
                 whileHover={{ rotate: 10, scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                className="w-16 h-16 rounded-full bg-[#F5F7F6] flex items-center justify-center"
+                className="w-16 h-16 rounded-full bg-[#8BA89B]/20 flex items-center justify-center"
               >
                 <Ear className="h-6 w-6 text-[#8BA89B]" />
               </motion.div>
@@ -181,7 +184,7 @@ export function About() {
               <motion.div
                 whileHover={{ rotate: 10, scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                className="w-16 h-16 rounded-full bg-[#F5F7F6] flex items-center justify-center"
+                className="w-16 h-16 rounded-full bg-[#8BA89B]/20 flex items-center justify-center"
               >
                 <Brain className="h-6 w-6 text-[#8BA89B]" />
               </motion.div>
@@ -207,7 +210,23 @@ export function About() {
           </motion.div>
         </div>
       </div>
+
+      {/* Divisor ondulado inferior */}
+      <div className="absolute bottom-0 left-0 right-0 h-20 overflow-hidden">
+        <svg
+          className="absolute bottom-0 w-full h-auto"
+          viewBox="0 0 1440 74"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,37 C240,74 480,0 720,37 C960,74 1200,0 1440,37 L1440,74 L0,74 Z"
+            fill="#8BA89B"
+            fillOpacity="0.1"
+          />
+        </svg>
+      </div>
     </section>
   )
 }
-

@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState, useRef } from "react"
 import useEmblaCarousel from "embla-carousel-react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import Image from "next/image"
 import { motion } from "framer-motion"
 
@@ -70,14 +70,30 @@ export function HeroCarousel() {
   }, [emblaApi, onSelect])
 
   return (
-    <div className="relative overflow-hidden bg-secondary">
+    <div className="relative overflow-hidden bg-[#8BA89B]/10">
+      {/* Divisor ondulado superior */}
+      <div className="absolute top-0 left-0 right-0 h-20 z-10 overflow-hidden">
+        <svg
+          className="absolute top-0 w-full h-auto"
+          viewBox="0 0 1440 74"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,0 L1440,0 L1440,37 C1200,0 960,74 720,37 C480,0 240,74 0,37 Z"
+            fill="white"
+          />
+        </svg>
+      </div>
+
       <div className="absolute inset-0 leaf-pattern opacity-10" />
 
-      <div className="relative" ref={emblaRef}>
+      <div className="relative pt-20" ref={emblaRef}>
         <div className="flex">
           {slides.map((slide, index) => (
             <div key={index} className="flex-[0_0_100%] min-w-0">
-              <div className="relative h-[60vh] md:h-[80vh] w-full overflow-hidden">
+              <div className="relative h-[60vh] md:h-[70vh] w-full overflow-hidden">
                 <div className="absolute inset-0">
                   <div ref={parallaxRef} className={`absolute inset-0 ${slide.pattern} opacity-5 z-10`} />
                   <Image
@@ -120,7 +136,7 @@ export function HeroCarousel() {
         transition={{ delay: 0.5 }}
         whileHover={{ scale: 1.1, backgroundColor: "rgba(255, 255, 255, 1)" }}
         onClick={scrollPrev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 p-2 md:p-3 rounded-full shadow-lg transition-all duration-300"
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 p-2 md:p-3 rounded-full shadow-lg transition-all duration-300 z-20"
       >
         <ChevronLeft className="h-4 w-4 md:h-6 md:w-6 text-[#8BA89B]" />
       </motion.button>
@@ -131,12 +147,12 @@ export function HeroCarousel() {
         transition={{ delay: 0.5 }}
         whileHover={{ scale: 1.1, backgroundColor: "rgba(255, 255, 255, 1)" }}
         onClick={scrollNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 p-2 md:p-3 rounded-full shadow-lg transition-all duration-300"
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 p-2 md:p-3 rounded-full shadow-lg transition-all duration-300 z-20"
       >
         <ChevronRight className="h-4 w-4 md:h-6 md:w-6 text-[#8BA89B]" />
       </motion.button>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
         {slides.map((_, index) => (
           <button
             key={index}
@@ -147,7 +163,22 @@ export function HeroCarousel() {
           />
         ))}
       </div>
+
+      {/* Divisor ondulado inferior */}
+      <div className="absolute bottom-0 left-0 right-0 h-20 overflow-hidden">
+        <svg
+          className="absolute bottom-0 w-full h-auto"
+          viewBox="0 0 1440 74"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,37 C240,74 480,0 720,37 C960,74 1200,0 1440,37 L1440,74 L0,74 Z"
+            fill="white"
+          />
+        </svg>
+      </div>
     </div>
   )
 }
-

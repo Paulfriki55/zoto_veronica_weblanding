@@ -14,21 +14,18 @@ export function Start() {
   const y = useTransform(scrollYProgress, [0, 1], [50, -50])
 
   return (
-    <section ref={containerRef} className="pt-24 pb-12 md:py-20 relative overflow-hidden">
+    <section ref={containerRef} className="pt-24 pb-0 md:py-20 relative overflow-hidden">
       {/* Elementos decorativos */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <motion.div
           style={{ y }}
-          className="absolute -right-32 top-1/3 w-64 h-64 bg-[#F5F7F6] rounded-full opacity-50"
+          className="absolute -right-32 top-1/3 w-64 h-64 bg-[#8BA89B] rounded-full opacity-20"
         ></motion.div>
-        <div className="absolute -left-32 bottom-0 w-64 h-64 bg-[#F5F7F6] rounded-full opacity-30"></div>
+        <div className="absolute -left-32 bottom-0 w-64 h-64 bg-[#8BA89B] rounded-full opacity-20"></div>
 
         {/* Patrón de puntos */}
         <div className="absolute top-20 left-20 w-40 h-40 dots-pattern opacity-10"></div>
         <div className="absolute bottom-20 right-20 w-40 h-40 dots-pattern opacity-10"></div>
-
-        {/* Patrón de onda */}
-        <div className="absolute bottom-0 left-0 w-full h-20 wave-pattern opacity-5"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -62,12 +59,13 @@ export function Start() {
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
-              className="md:hidden relative h-[400px] overflow-hidden rounded-2xl shadow-lg"
+              className="md:hidden relative h-[300px] overflow-hidden rounded-2xl shadow-lg"
             >
+              <div className="absolute inset-0 bg-[#8BA89B]/20 rounded-2xl z-10"></div>
               <Image src="/perfil.png" alt="Verónica Zoto - Fonoaudióloga" fill className="object-cover" priority />
 
               {/* Elementos decorativos sobre la imagen */}
-              <div className="absolute -bottom-10 -right-10 w-20 h-20 bg-[#F5F7F6] rounded-full opacity-50"></div>
+              <div className="absolute -bottom-10 -right-10 w-20 h-20 bg-[#8BA89B] rounded-full opacity-30"></div>
               <div className="absolute -top-5 -left-5 w-10 h-10 border-2 border-[#8BA89B] rounded-full opacity-70"></div>
             </motion.div>
 
@@ -116,16 +114,39 @@ export function Start() {
             className="relative hidden md:block"
           >
             <div className="relative h-[500px] overflow-hidden rounded-2xl shadow-xl">
+              <div className="absolute inset-0 bg-[#8BA89B]/20 rounded-2xl z-10"></div>
               <Image src="/perfil.png" alt="Verónica Zoto - Fonoaudióloga" fill className="object-cover" priority />
 
               {/* Elementos decorativos sobre la imagen */}
-              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#F5F7F6] rounded-full opacity-50"></div>
+              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#8BA89B] rounded-full opacity-30"></div>
               <div className="absolute -top-5 -left-5 w-20 h-20 border-4 border-[#8BA89B] rounded-full opacity-70"></div>
             </div>
           </motion.div>
         </div>
       </div>
+
+      {/* Divisor ondulado */}
+      <div className="relative h-24 mt-12 overflow-hidden">
+        <svg
+          className="absolute bottom-0 w-full h-auto"
+          viewBox="0 0 1440 74"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,37 C240,74 480,0 720,37 C960,74 1200,0 1440,37 L1440,74 L0,74 Z"
+            fill="#8BA89B"
+            fillOpacity="0.2"
+          />
+          <path
+            d="M0,37 C240,74 480,0 720,37 C960,74 1200,0 1440,37 L1440,74 L0,74 Z"
+            fill="#8BA89B"
+            fillOpacity="0.1"
+            transform="translate(0, 10)"
+          />
+        </svg>
+      </div>
     </section>
   )
 }
-

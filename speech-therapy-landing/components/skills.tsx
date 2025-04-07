@@ -29,21 +29,34 @@ export function Skills() {
 
   return (
     <section ref={containerRef} className="py-16 md:py-24 bg-white relative overflow-hidden">
+      {/* Divisor ondulado superior */}
+      <div className="absolute top-0 left-0 right-0 h-20 overflow-hidden">
+        <svg
+          className="absolute top-0 w-full h-auto"
+          viewBox="0 0 1440 74"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <path d="M0,0 L1440,0 L1440,37 C1200,0 960,74 720,37 C480,0 240,74 0,37 Z" fill="#8BA89B" fillOpacity="0.1" />
+        </svg>
+      </div>
+
       {/* Elementos decorativos */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <motion.div
           style={{ y }}
-          className="absolute -left-32 top-1/2 -translate-y-1/2 w-64 h-64 bg-[#F5F7F6] rounded-full opacity-50"
+          className="absolute -left-32 top-1/2 -translate-y-1/2 w-64 h-64 bg-[#8BA89B] rounded-full opacity-20"
         ></motion.div>
-        <div className="absolute -right-32 bottom-0 w-64 h-64 bg-[#F5F7F6] rounded-full opacity-30"></div>
+        <div className="absolute -right-32 bottom-0 w-64 h-64 bg-[#8BA89B] rounded-full opacity-20"></div>
 
         {/* Patrón de puntos */}
         <div className="absolute top-20 right-20 w-40 h-40 dots-pattern opacity-10"></div>
         <div className="absolute bottom-20 left-20 w-40 h-40 dots-pattern opacity-10"></div>
 
-        {/* Patrón de onda */}
-        <div className="absolute top-0 left-0 w-full h-20 wave-pattern opacity-5"></div>
-        <div className="absolute bottom-0 left-0 w-full h-20 wave-pattern opacity-5"></div>
+        {/* Patrón de círculos */}
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 border-4 border-[#8BA89B] rounded-full opacity-10"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-32 h-32 border-4 border-[#8BA89B] rounded-full opacity-10"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -53,7 +66,7 @@ export function Skills() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <div className="inline-block px-3 py-1 bg-[#F5F7F6] rounded-full text-sm text-[#8BA89B] mb-4">
+          <div className="inline-block px-3 py-1 bg-[#8BA89B]/20 rounded-full text-sm text-[#8BA89B] mb-4">
             Especialidades
           </div>
 
@@ -98,7 +111,7 @@ export function Skills() {
                 transition={{ delay: 0.1 }}
                 className="flex items-start"
               >
-                <div className="bg-[#F5F7F6] p-1 rounded-full mr-2 mt-0.5">
+                <div className="bg-[#8BA89B]/20 p-1 rounded-full mr-2 mt-0.5">
                   <Check className="h-4 w-4 text-[#8BA89B]" />
                 </div>
                 <span className="text-gray-700">Evaluación del desarrollo del lenguaje</span>
@@ -109,7 +122,7 @@ export function Skills() {
                 transition={{ delay: 0.2 }}
                 className="flex items-start"
               >
-                <div className="bg-[#F5F7F6] p-1 rounded-full mr-2 mt-0.5">
+                <div className="bg-[#8BA89B]/20 p-1 rounded-full mr-2 mt-0.5">
                   <Check className="h-4 w-4 text-[#8BA89B]" />
                 </div>
                 <span className="text-gray-700">Trastornos del habla infantil</span>
@@ -120,7 +133,7 @@ export function Skills() {
                 transition={{ delay: 0.3 }}
                 className="flex items-start"
               >
-                <div className="bg-[#F5F7F6] p-1 rounded-full mr-2 mt-0.5">
+                <div className="bg-[#8BA89B]/20 p-1 rounded-full mr-2 mt-0.5">
                   <Check className="h-4 w-4 text-[#8BA89B]" />
                 </div>
                 <span className="text-gray-700">Dificultades de aprendizaje</span>
@@ -131,7 +144,7 @@ export function Skills() {
                 transition={{ delay: 0.4 }}
                 className="flex items-start"
               >
-                <div className="bg-[#F5F7F6] p-1 rounded-full mr-2 mt-0.5">
+                <div className="bg-[#8BA89B]/20 p-1 rounded-full mr-2 mt-0.5">
                   <Check className="h-4 w-4 text-[#8BA89B]" />
                 </div>
                 <span className="text-gray-700">TDAH y trastornos del aprendizaje</span>
@@ -141,7 +154,7 @@ export function Skills() {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href="/consulta"
-                className="block text-center py-2 px-4 bg-[#F5F7F6] text-[#8BA89B] font-medium rounded-md hover:bg-[#E5EDE9] transition-colors"
+                className="block text-center py-2 px-4 bg-[#8BA89B]/20 text-[#8BA89B] font-medium rounded-md hover:bg-[#8BA89B]/30 transition-colors"
               >
                 Consultar
               </Link>
@@ -172,7 +185,7 @@ export function Skills() {
                 transition={{ delay: 0.1 }}
                 className="flex items-start"
               >
-                <div className="bg-[#F5F7F6] p-1 rounded-full mr-2 mt-0.5">
+                <div className="bg-[#8BA89B]/20 p-1 rounded-full mr-2 mt-0.5">
                   <Check className="h-4 w-4 text-[#8BA89B]" />
                 </div>
                 <span className="text-gray-700">Afasia y trastornos del lenguaje</span>
@@ -183,7 +196,7 @@ export function Skills() {
                 transition={{ delay: 0.2 }}
                 className="flex items-start"
               >
-                <div className="bg-[#F5F7F6] p-1 rounded-full mr-2 mt-0.5">
+                <div className="bg-[#8BA89B]/20 p-1 rounded-full mr-2 mt-0.5">
                   <Check className="h-4 w-4 text-[#8BA89B]" />
                 </div>
                 <span className="text-gray-700">Disartria y apraxia</span>
@@ -194,7 +207,7 @@ export function Skills() {
                 transition={{ delay: 0.3 }}
                 className="flex items-start"
               >
-                <div className="bg-[#F5F7F6] p-1 rounded-full mr-2 mt-0.5">
+                <div className="bg-[#8BA89B]/20 p-1 rounded-full mr-2 mt-0.5">
                   <Check className="h-4 w-4 text-[#8BA89B]" />
                 </div>
                 <span className="text-gray-700">Rehabilitación post-ACV</span>
@@ -205,7 +218,7 @@ export function Skills() {
                 transition={{ delay: 0.4 }}
                 className="flex items-start"
               >
-                <div className="bg-[#F5F7F6] p-1 rounded-full mr-2 mt-0.5">
+                <div className="bg-[#8BA89B]/20 p-1 rounded-full mr-2 mt-0.5">
                   <Check className="h-4 w-4 text-[#8BA89B]" />
                 </div>
                 <span className="text-gray-700">Trastornos cognitivo-comunicativos</span>
@@ -216,7 +229,7 @@ export function Skills() {
                 transition={{ delay: 0.5 }}
                 className="flex items-start"
               >
-                <div className="bg-[#F5F7F6] p-1 rounded-full mr-2 mt-0.5">
+                <div className="bg-[#8BA89B]/20 p-1 rounded-full mr-2 mt-0.5">
                   <Check className="h-4 w-4 text-[#8BA89B]" />
                 </div>
                 <span className="text-gray-700">Terapia de deglución</span>
@@ -253,7 +266,7 @@ export function Skills() {
                 transition={{ delay: 0.1 }}
                 className="flex items-start"
               >
-                <div className="bg-[#F5F7F6] p-1 rounded-full mr-2 mt-0.5">
+                <div className="bg-[#8BA89B]/20 p-1 rounded-full mr-2 mt-0.5">
                   <Check className="h-4 w-4 text-[#8BA89B]" />
                 </div>
                 <span className="text-gray-700">Evaluación auditiva completa</span>
@@ -264,7 +277,7 @@ export function Skills() {
                 transition={{ delay: 0.2 }}
                 className="flex items-start"
               >
-                <div className="bg-[#F5F7F6] p-1 rounded-full mr-2 mt-0.5">
+                <div className="bg-[#8BA89B]/20 p-1 rounded-full mr-2 mt-0.5">
                   <Check className="h-4 w-4 text-[#8BA89B]" />
                 </div>
                 <span className="text-gray-700">Adaptación de audífonos</span>
@@ -275,7 +288,7 @@ export function Skills() {
                 transition={{ delay: 0.3 }}
                 className="flex items-start"
               >
-                <div className="bg-[#F5F7F6] p-1 rounded-full mr-2 mt-0.5">
+                <div className="bg-[#8BA89B]/20 p-1 rounded-full mr-2 mt-0.5">
                   <Check className="h-4 w-4 text-[#8BA89B]" />
                 </div>
                 <span className="text-gray-700">Rehabilitación auditiva</span>
@@ -286,7 +299,7 @@ export function Skills() {
                 transition={{ delay: 0.4 }}
                 className="flex items-start"
               >
-                <div className="bg-[#F5F7F6] p-1 rounded-full mr-2 mt-0.5">
+                <div className="bg-[#8BA89B]/20 p-1 rounded-full mr-2 mt-0.5">
                   <Check className="h-4 w-4 text-[#8BA89B]" />
                 </div>
                 <span className="text-gray-700">Terapia para acúfenos (tinnitus)</span>
@@ -296,13 +309,30 @@ export function Skills() {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href="/consulta"
-                className="block text-center py-2 px-4 bg-[#F5F7F6] text-[#8BA89B] font-medium rounded-md hover:bg-[#E5EDE9] transition-colors"
+                className="block text-center py-2 px-4 bg-[#8BA89B]/20 text-[#8BA89B] font-medium rounded-md hover:bg-[#8BA89B]/30 transition-colors"
               >
                 Consultar
               </Link>
             </motion.div>
           </motion.div>
         </div>
+      </div>
+
+      {/* Divisor ondulado inferior */}
+      <div className="absolute bottom-0 left-0 right-0 h-20 overflow-hidden">
+        <svg
+          className="absolute bottom-0 w-full h-auto"
+          viewBox="0 0 1440 74"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,37 C240,74 480,0 720,37 C960,74 1200,0 1440,37 L1440,74 L0,74 Z"
+            fill="#8BA89B"
+            fillOpacity="0.2"
+          />
+        </svg>
       </div>
     </section>
   )
