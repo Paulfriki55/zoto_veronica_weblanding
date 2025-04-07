@@ -31,17 +31,26 @@ export default function Home() {
 
   return (
     <motion.main
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="min-h-screen"
-    >
-      <Header />
-      <HeroCarousel />
-      <About />
-      <Skills />
-      <Contact />
-    </motion.main>
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 0.5 }}
+  className="min-h-screen"
+>
+  <Header />
+  <section id="hero">
+    <HeroCarousel />
+  </section>
+  <section id="about">
+    <About />
+  </section>
+  <section id="skills">
+    <Skills />
+  </section>
+  <section id="contact">
+    <Contact />
+  </section>
+</motion.main>
+
   )
 }
 

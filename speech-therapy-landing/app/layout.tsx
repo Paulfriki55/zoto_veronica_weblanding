@@ -26,7 +26,11 @@ const playfairDisplay = Playfair_Display({
 export const metadata: Metadata = {
   title: "Verónica Zoto - Fonoaudióloga",
   description: "Servicios profesionales de fonoaudiología",
+  icons: {
+    icon: "/logo.svg",
+  },
 }
+
 
 export default function RootLayout({
   children,
