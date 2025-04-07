@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import { Phone } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -15,15 +14,18 @@ export function Header() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
     }
+
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   const navItems = [
-    { name: "Inicio", href: "#hero" },
-    { name: "Servicios", href: "#about" },
-    { name: "Especialidades", href: "#skills" },
-    { name: "Contacto", href: "#contact" },
+    { name: "Servicios", href: "/servicios" },
+    { name: "Experiencia", href: "/experiencia" },
+    { name: "Especialidades", href: "/especialidades" },
+    { name: "Testimonios", href: "/testimonios" },
+    { name: "Galería", href: "/galeria" },
+    { name: "Contacto", href: "/contacto" },
   ]
 
   return (
@@ -32,13 +34,18 @@ export function Header() {
         scrolled ? "bg-white/95 backdrop-blur-md shadow-sm py-2" : "bg-white py-4"
       }`}
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          {/* Logo */}
-          <Link href="#hero" className="flex items-center gap-2 group">
-            <div className="relative h-20 w-20">
-              <Image src="/logo.svg" alt="Logo" fill style={{ objectFit: "contain" }} />
-            </div>
+          {/* Logo and Name */}
+          <Link href="/" className="flex items-center gap-2 group">
+            <motion.div
+              whileHover={{ rotate: 10 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              className="h-8 w-8 rounded-full bg-[#8BA89B] flex items-center justify-center text-white font-bold relative overflow-hidden"
+            >
+              <span className="relative z-10">V</span>
+              <div className="absolute inset-0 bg-[#7A9889] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+            </motion.div>
             <div>
               <h1 className="text-xl font-semibold">
                 Verónica <span className="font-bold">Zoto</span>
@@ -47,7 +54,7 @@ export function Header() {
             </div>
           </Link>
 
-          {/* Navegación para desktop */}
+          {/* Navigation for desktop */}
           <nav className="hidden md:flex items-center space-x-6">
             {navItems.map((item, index) => (
               <motion.div
@@ -64,7 +71,7 @@ export function Header() {
             ))}
           </nav>
 
-          {/* Botón de llamada a la acción */}
+          {/* Call to Action Button */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -78,12 +85,8 @@ export function Header() {
             </Button>
           </motion.div>
 
-          {/* Botón del menú móvil */}
-          <motion.button
-            className="md:hidden p-2"
-            onClick={() => setMenuOpen(!menuOpen)}
-            whileTap={{ scale: 0.9 }}
-          >
+          {/* Mobile menu button */}
+          <motion.button className="md:hidden p-2" onClick={() => setMenuOpen(!menuOpen)} whileTap={{ scale: 0.9 }}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -101,7 +104,7 @@ export function Header() {
           </motion.button>
         </div>
 
-        {/* Menú móvil */}
+        {/* Mobile menu */}
         <AnimatePresence>
           {menuOpen && (
             <motion.div
@@ -151,3 +154,4 @@ export function Header() {
     </header>
   )
 }
+
