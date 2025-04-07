@@ -37,11 +37,19 @@ export default function Home() {
       className="min-h-screen"
     >
       <Header />
-      <HeroCarousel />
-      <About />
-      <Skills />
-      <Contact />
-    </motion.main>
+  <section id="hero">
+    <HeroCarousel />
+  </section>
+  <section id="about">
+    <About />
+  </section>
+  <section id="skills">
+    <Skills />
+  </section>
+  <section id="contact">
+    <Contact />
+  </section>
+</motion.main>
   )
 }
 
