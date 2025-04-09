@@ -2,6 +2,7 @@
 
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import { motion } from "framer-motion"
 
 export function Footer() {
@@ -27,11 +28,16 @@ export function Footer() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           {/* Logo y copyright */}
-          <div className="text-center md:text-left">
-            <h3 className="text-xl font-semibold mb-2">
-              Verónica <span className="font-bold">Zoto</span>
-            </h3>
-            <p className="text-sm text-gray-500">Fonoaudióloga Profesional</p>
+          <div className="text-center md:text-left flex items-center gap-3">
+            <div className="relative h-16 w-16">
+              <Image src="/logo.svg" alt="Logo" fill style={{ objectFit: "contain" }} />
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold mb-2">
+                Verónica <span className="font-bold">Zoto</span>
+              </h3>
+              <p className="text-sm text-gray-500">Fonoaudióloga Profesional</p>
+            </div>
           </div>
 
           {/* Redes sociales */}

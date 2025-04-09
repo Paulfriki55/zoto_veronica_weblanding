@@ -29,21 +29,21 @@ export function Header() {
   return (
     <header
       className={`w-full fixed top-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-white/95 backdrop-blur-md shadow-sm py-2" : "bg-white py-4"
+        scrolled ? "bg-white/95 backdrop-blur-md shadow-sm py-1" : "bg-white py-2"
       }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link href="#hero" className="flex items-center gap-2 group">
-            <div className="relative h-8 w-8">
+          <Link href="#hero" className="flex items-center gap-1 group">
+            <div className="relative h-16 w-16">
               <Image src="/logo.svg" alt="Logo" fill style={{ objectFit: "contain" }} />
             </div>
             <div>
-              <h1 className="text-xl font-semibold">
+              <h1 className="text-xl font-semibold leading-tight">
                 Verónica <span className="font-bold">Zoto</span>
               </h1>
-              <p className="text-xs text-gray-600 -mt-1">Fonoaudióloga</p>
+              <p className="text-xs text-gray-600 -mt-1.5">Fonoaudióloga</p>
             </div>
           </Link>
 
