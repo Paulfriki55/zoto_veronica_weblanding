@@ -2,6 +2,9 @@ import type { Metadata } from "next"
 import { Cormorant_Garamond, Montserrat, Playfair_Display } from "next/font/google"
 import "./globals.css"
 import type React from "react"
+import { LenisProvider } from "@/components/lenis-provider"
+import { CursorFollower } from "@/components/cursor-follower"
+import { ScrollProgress } from "@/components/scroll-progress"
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -38,7 +41,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className={`${cormorant.variable} ${montserrat.variable} ${playfairDisplay.variable}`}>{children}</body>
+      <body className={`${cormorant.variable} ${montserrat.variable} ${playfairDisplay.variable}`}>
+        <LenisProvider>
+          <CursorFollower />
+          <ScrollProgress />
+          {children}
+        </LenisProvider>
+      </body>
     </html>
   )
 }

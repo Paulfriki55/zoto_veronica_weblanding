@@ -4,6 +4,8 @@ import { ArrowRight, MessageSquare, Ear, Brain } from 'lucide-react'
 import Link from "next/link"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
+import { ScrollReveal } from "./scroll-reveal"
+import { SmoothAnchor } from "./smooth-anchor"
 
 export function About() {
   const containerRef = useRef<HTMLElement>(null)
@@ -93,24 +95,21 @@ export function About() {
 
         <div className="grid md:grid-cols-3 gap-6 mt-16">
           {/* Terapia del Lenguaje */}
-          <motion.div
-            custom={0}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={cardVariants}
-            whileHover={{ y: -10, boxShadow: "0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)" }}
-            className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-all duration-300"
-          >
+          <ScrollReveal delay={0.1} direction="up" className="h-full">
+            <motion.div
+              custom={0}
+              whileHover={{ y: -10, boxShadow: "0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)" }}
+              className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-all duration-300 h-full"
+            >
             <div className="flex justify-center mb-6">
-              <motion.div
-                whileHover={{ rotate: 10, scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                className="w-16 h-16 rounded-full bg-[#8BA89B]/20 flex items-center justify-center"
-              >
-                <MessageSquare className="h-6 w-6 text-[#8BA89B]" />
-              </motion.div>
-            </div>
+                <motion.div
+                  whileHover={{ rotate: 10, scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  className="w-16 h-16 rounded-full bg-[#8BA89B]/20 flex items-center justify-center"
+                >
+                  <MessageSquare className="h-6 w-6 text-[#8BA89B]" />
+                </motion.div>
+              </div>
 
             <h3 className="text-xl font-bold text-center mb-4">Terapia del Lenguaje</h3>
 
@@ -120,27 +119,25 @@ export function About() {
 
             <div className="text-center">
               <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
-                <Link
-                  href="/servicios/lenguaje"
+                <SmoothAnchor
+                  href="#contact"
                   className="inline-flex items-center text-[#8BA89B] hover:text-[#7A9889] font-medium text-sm group"
                 >
                   Más información
                   <ArrowRight className="ml-1 h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
-                </Link>
+                </SmoothAnchor>
               </motion.div>
             </div>
           </motion.div>
+        </ScrollReveal>
 
           {/* Audiología */}
-          <motion.div
-            custom={1}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={cardVariants}
-            whileHover={{ y: -10, boxShadow: "0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)" }}
-            className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-all duration-300"
-          >
+          <ScrollReveal delay={0.3} direction="up" className="h-full">
+            <motion.div
+              custom={1}
+              whileHover={{ y: -10, boxShadow: "0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)" }}
+              className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-all duration-300 h-full"
+            >
             <div className="flex justify-center mb-6">
               <motion.div
                 whileHover={{ rotate: 10, scale: 1.1 }}
@@ -159,55 +156,54 @@ export function About() {
 
             <div className="text-center">
               <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
-                <Link
-                  href="/servicios/audiologia"
+                <SmoothAnchor
+                  href="#contact"
                   className="inline-flex items-center text-[#8BA89B] hover:text-[#7A9889] font-medium text-sm group"
                 >
                   Más información
                   <ArrowRight className="ml-1 h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
-                </Link>
+                </SmoothAnchor>
               </motion.div>
             </div>
           </motion.div>
+          </ScrollReveal>
 
           {/* Neurorehabilitación */}
-          <motion.div
-            custom={2}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={cardVariants}
-            whileHover={{ y: -10, boxShadow: "0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)" }}
-            className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-all duration-300"
-          >
-            <div className="flex justify-center mb-6">
-              <motion.div
-                whileHover={{ rotate: 10, scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                className="w-16 h-16 rounded-full bg-[#8BA89B]/20 flex items-center justify-center"
-              >
-                <Brain className="h-6 w-6 text-[#8BA89B]" />
-              </motion.div>
-            </div>
-
-            <h3 className="text-xl font-bold text-center mb-4">Neurorehabilitación</h3>
-
-            <p className="text-gray-600 text-center mb-6">
-              Terapia para pacientes con condiciones neurológicas que afectan el habla y la comunicación.
-            </p>
-
-            <div className="text-center">
-              <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
-                <Link
-                  href="/servicios/neurorehabilitacion"
-                  className="inline-flex items-center text-[#8BA89B] hover:text-[#7A9889] font-medium text-sm group"
+          <ScrollReveal delay={0.5} direction="up" className="h-full">
+            <motion.div
+              custom={2}
+              whileHover={{ y: -10, boxShadow: "0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)" }}
+              className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-all duration-300 h-full"
+            >
+              <div className="flex justify-center mb-6">
+                <motion.div
+                  whileHover={{ rotate: 10, scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  className="w-16 h-16 rounded-full bg-[#8BA89B]/20 flex items-center justify-center"
                 >
-                  Más información
-                  <ArrowRight className="ml-1 h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </motion.div>
-            </div>
-          </motion.div>
+                  <Brain className="h-6 w-6 text-[#8BA89B]" />
+                </motion.div>
+              </div>
+
+              <h3 className="text-xl font-bold text-center mb-4">Neurorehabilitación</h3>
+
+              <p className="text-gray-600 text-center mb-6">
+                Terapia para pacientes con condiciones neurológicas que afectan el habla y la comunicación.
+              </p>
+
+              <div className="text-center">
+                <motion.div whileHover={{ x: 5 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
+                  <SmoothAnchor
+                    href="#contact"
+                    className="inline-flex items-center text-[#8BA89B] hover:text-[#7A9889] font-medium text-sm group"
+                  >
+                    Más información
+                    <ArrowRight className="ml-1 h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
+                  </SmoothAnchor>
+                </motion.div>
+              </div>
+            </motion.div>
+          </ScrollReveal>
         </div>
       </div>
 

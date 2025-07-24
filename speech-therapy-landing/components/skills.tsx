@@ -4,6 +4,8 @@ import { Check } from "lucide-react"
 import Link from "next/link"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
+import { ScrollAnimationWrapper } from "./scroll-animation-wrapper"
+import { SmoothAnchor } from "./smooth-anchor"
 
 export function Skills() {
   const containerRef = useRef<HTMLElement>(null)
@@ -92,84 +94,70 @@ export function Skills() {
 
         <div className="grid md:grid-cols-3 gap-6 mt-12">
           {/* Fonoaudiología Pediátrica */}
-          <motion.div
-            custom={0}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={cardVariants}
-            whileHover={{ y: -10, boxShadow: "0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)" }}
-            className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 transition-all duration-300"
+          <ScrollAnimationWrapper 
+            animationClass="slide-in-left-scroll" 
+            className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg"
           >
             <h3 className="text-xl font-bold mb-2">Fonoaudiología Pediátrica</h3>
             <p className="text-sm text-gray-500 mb-6">Especializada en niños de 2 a 7 años</p>
 
             <ul className="space-y-4 mb-8">
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.1 }}
+              <ScrollAnimationWrapper
+                animationClass="fade-in-scroll"
+                threshold={0.2}
                 className="flex items-start"
               >
                 <div className="bg-[#8BA89B]/20 p-1 rounded-full mr-2 mt-0.5">
                   <Check className="h-4 w-4 text-[#8BA89B]" />
                 </div>
                 <span className="text-gray-700">Evaluación del desarrollo del lenguaje</span>
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 }}
+              </ScrollAnimationWrapper>
+              <ScrollAnimationWrapper
+                animationClass="fade-in-scroll"
+                threshold={0.2}
                 className="flex items-start"
               >
                 <div className="bg-[#8BA89B]/20 p-1 rounded-full mr-2 mt-0.5">
                   <Check className="h-4 w-4 text-[#8BA89B]" />
                 </div>
                 <span className="text-gray-700">Trastornos del habla infantil</span>
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3 }}
+              </ScrollAnimationWrapper>
+              <ScrollAnimationWrapper
+                animationClass="fade-in-scroll"
+                threshold={0.2}
                 className="flex items-start"
               >
                 <div className="bg-[#8BA89B]/20 p-1 rounded-full mr-2 mt-0.5">
                   <Check className="h-4 w-4 text-[#8BA89B]" />
                 </div>
                 <span className="text-gray-700">Dificultades de aprendizaje</span>
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4 }}
+              </ScrollAnimationWrapper>
+              <ScrollAnimationWrapper
+                animationClass="fade-in-scroll"
+                threshold={0.2}
                 className="flex items-start"
               >
                 <div className="bg-[#8BA89B]/20 p-1 rounded-full mr-2 mt-0.5">
                   <Check className="h-4 w-4 text-[#8BA89B]" />
                 </div>
                 <span className="text-gray-700">TDAH y trastornos del aprendizaje</span>
-              </motion.li>
+              </ScrollAnimationWrapper>
             </ul>
 
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link
-                href="/consulta"
+            <div className="hover:scale-105 active:scale-95 transition-transform">
+              <SmoothAnchor
+                href="#contact"
                 className="block text-center py-2 px-4 bg-[#8BA89B]/20 text-[#8BA89B] font-medium rounded-md hover:bg-[#8BA89B]/30 transition-colors"
               >
                 Consultar
-              </Link>
-            </motion.div>
-          </motion.div>
+              </SmoothAnchor>
+            </div>
+          </ScrollAnimationWrapper>
 
           {/* Neurorehabilitación */}
-          <motion.div
-            custom={1}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={cardVariants}
-            whileHover={{ y: -10, boxShadow: "0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)" }}
-            className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 relative transition-all duration-300"
+          <ScrollAnimationWrapper 
+            animationClass="fade-in-scroll" 
+            className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 relative transition-all duration-300 hover:-translate-y-2 hover:shadow-lg"
           >
             <div className="absolute top-0 right-0 left-0">
               <div className="bg-[#8BA89B] text-white text-sm py-1 px-4 rounded-t-xl w-32">Principal</div>
@@ -179,142 +167,128 @@ export function Skills() {
             <p className="text-sm text-gray-500 mb-6">Enfoque en condiciones neurológicas</p>
 
             <ul className="space-y-4 mb-8">
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.1 }}
+              <ScrollAnimationWrapper
+                animationClass="fade-in-scroll"
+                threshold={0.2}
                 className="flex items-start"
               >
                 <div className="bg-[#8BA89B]/20 p-1 rounded-full mr-2 mt-0.5">
                   <Check className="h-4 w-4 text-[#8BA89B]" />
                 </div>
                 <span className="text-gray-700">Afasia y trastornos del lenguaje</span>
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 }}
+              </ScrollAnimationWrapper>
+              <ScrollAnimationWrapper
+                animationClass="fade-in-scroll"
+                threshold={0.2}
                 className="flex items-start"
               >
                 <div className="bg-[#8BA89B]/20 p-1 rounded-full mr-2 mt-0.5">
                   <Check className="h-4 w-4 text-[#8BA89B]" />
                 </div>
                 <span className="text-gray-700">Disartria y apraxia</span>
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3 }}
+              </ScrollAnimationWrapper>
+              <ScrollAnimationWrapper
+                animationClass="fade-in-scroll"
+                threshold={0.2}
                 className="flex items-start"
               >
                 <div className="bg-[#8BA89B]/20 p-1 rounded-full mr-2 mt-0.5">
                   <Check className="h-4 w-4 text-[#8BA89B]" />
                 </div>
                 <span className="text-gray-700">Rehabilitación post-ACV</span>
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4 }}
+              </ScrollAnimationWrapper>
+              <ScrollAnimationWrapper
+                animationClass="fade-in-scroll"
+                threshold={0.2}
                 className="flex items-start"
               >
                 <div className="bg-[#8BA89B]/20 p-1 rounded-full mr-2 mt-0.5">
                   <Check className="h-4 w-4 text-[#8BA89B]" />
                 </div>
                 <span className="text-gray-700">Trastornos cognitivo-comunicativos</span>
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.5 }}
+              </ScrollAnimationWrapper>
+              <ScrollAnimationWrapper
+                animationClass="fade-in-scroll"
+                threshold={0.2}
                 className="flex items-start"
               >
                 <div className="bg-[#8BA89B]/20 p-1 rounded-full mr-2 mt-0.5">
                   <Check className="h-4 w-4 text-[#8BA89B]" />
                 </div>
                 <span className="text-gray-700">Terapia de deglución</span>
-              </motion.li>
+              </ScrollAnimationWrapper>
             </ul>
 
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link
-                href="/consulta"
+            <div className="hover:scale-105 active:scale-95 transition-transform">
+              <SmoothAnchor
+                href="#contact"
                 className="block text-center py-2 px-4 bg-[#8BA89B] text-white font-medium rounded-md hover:bg-[#7A9889] transition-colors"
               >
                 Consultar
-              </Link>
-            </motion.div>
-          </motion.div>
+              </SmoothAnchor>
+            </div>
+          </ScrollAnimationWrapper>
 
           {/* Audiología */}
-          <motion.div
-            custom={2}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={cardVariants}
-            whileHover={{ y: -10, boxShadow: "0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04)" }}
-            className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 transition-all duration-300"
+          <ScrollAnimationWrapper 
+            animationClass="slide-in-right-scroll" 
+            className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 transition-all duration-300 hover:-translate-y-2 hover:shadow-lg"
           >
             <h3 className="text-xl font-bold mb-2">Audiología</h3>
             <p className="text-sm text-gray-500 mb-6">Evaluación y tratamiento auditivo</p>
 
             <ul className="space-y-4 mb-8">
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.1 }}
+              <ScrollAnimationWrapper
+                animationClass="fade-in-scroll"
+                threshold={0.2}
                 className="flex items-start"
               >
                 <div className="bg-[#8BA89B]/20 p-1 rounded-full mr-2 mt-0.5">
                   <Check className="h-4 w-4 text-[#8BA89B]" />
                 </div>
                 <span className="text-gray-700">Evaluación auditiva completa</span>
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 }}
+              </ScrollAnimationWrapper>
+              <ScrollAnimationWrapper
+                animationClass="fade-in-scroll"
+                threshold={0.2}
                 className="flex items-start"
               >
                 <div className="bg-[#8BA89B]/20 p-1 rounded-full mr-2 mt-0.5">
                   <Check className="h-4 w-4 text-[#8BA89B]" />
                 </div>
                 <span className="text-gray-700">Adaptación de audífonos</span>
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3 }}
+              </ScrollAnimationWrapper>
+              <ScrollAnimationWrapper
+                animationClass="fade-in-scroll"
+                threshold={0.2}
                 className="flex items-start"
               >
                 <div className="bg-[#8BA89B]/20 p-1 rounded-full mr-2 mt-0.5">
                   <Check className="h-4 w-4 text-[#8BA89B]" />
                 </div>
                 <span className="text-gray-700">Rehabilitación auditiva</span>
-              </motion.li>
-              <motion.li
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4 }}
+              </ScrollAnimationWrapper>
+              <ScrollAnimationWrapper
+                animationClass="fade-in-scroll"
+                threshold={0.2}
                 className="flex items-start"
               >
                 <div className="bg-[#8BA89B]/20 p-1 rounded-full mr-2 mt-0.5">
                   <Check className="h-4 w-4 text-[#8BA89B]" />
                 </div>
                 <span className="text-gray-700">Terapia para acúfenos (tinnitus)</span>
-              </motion.li>
+              </ScrollAnimationWrapper>
             </ul>
 
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link
-                href="/consulta"
+            <div className="hover:scale-105 active:scale-95 transition-transform">
+              <SmoothAnchor
+                href="#contact"
                 className="block text-center py-2 px-4 bg-[#8BA89B]/20 text-[#8BA89B] font-medium rounded-md hover:bg-[#8BA89B]/30 transition-colors"
               >
                 Consultar
-              </Link>
-            </motion.div>
-          </motion.div>
+              </SmoothAnchor>
+            </div>
+          </ScrollAnimationWrapper>
         </div>
       </div>
 

@@ -6,6 +6,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { SmoothAnchor } from "./smooth-anchor"
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -35,7 +36,7 @@ export function Header() {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link href="#hero" className="flex items-center gap-1 group">
+          <SmoothAnchor href="#hero" className="flex items-center gap-1 group">
             <div className="relative h-16 w-16">
               <Image src="/logo.svg" alt="Logo" fill style={{ objectFit: "contain" }} />
             </div>
@@ -45,7 +46,7 @@ export function Header() {
               </h1>
               <p className="text-xs text-gray-600 -mt-1.5">Fonoaudióloga</p>
             </div>
-          </Link>
+          </SmoothAnchor>
 
           {/* Navegación para desktop */}
           <nav className="hidden md:flex items-center space-x-6">
@@ -56,10 +57,10 @@ export function Header() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Link href={item.href} className="text-sm font-medium relative group">
+                <SmoothAnchor href={item.href} className="text-sm font-medium relative group">
                   <span className="relative z-10">{item.name}</span>
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#8BA89B] group-hover:w-full transition-all duration-300"></span>
-                </Link>
+                </SmoothAnchor>
               </motion.div>
             ))}
           </nav>
@@ -119,13 +120,13 @@ export function Header() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <Link
+                    <SmoothAnchor
                       href={item.href}
                       className="text-sm font-medium hover:text-[#8BA89B] transition-colors block py-2"
                       onClick={() => setMenuOpen(false)}
                     >
                       {item.name}
-                    </Link>
+                    </SmoothAnchor>
                   </motion.div>
                 ))}
                 <motion.div
