@@ -7,7 +7,6 @@ import { Skills } from "@/components/skills"
 import { Contact } from "@/components/contact"
 import { Start } from "@/components/start"
 import { Footer } from "@/components/footer"
-import { ScrollToTop } from "@/components/scroll-to-top"
 import { useEffect } from "react"
 import { motion } from "framer-motion"
 
@@ -25,13 +24,9 @@ export default function Home() {
       })
     }
 
-    // Usamos el evento lenis:scroll para mantener la compatibilidad con Lenis
-    document.addEventListener("lenis:scroll", handleScroll)
-    // Mantenemos el evento scroll para compatibilidad
     window.addEventListener("scroll", handleScroll)
 
     return () => {
-      document.removeEventListener("lenis:scroll", handleScroll)
       window.removeEventListener("scroll", handleScroll)
     }
   }, [])
@@ -43,7 +38,6 @@ export default function Home() {
       transition={{ duration: 0.5 }}
       className="min-h-screen"
     >
-      <ScrollToTop />
       <Header />
       <section id="start">
         <Start />

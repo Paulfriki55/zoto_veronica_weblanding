@@ -4,7 +4,6 @@ import { Phone, Mail, MapPin, Clock, Timer } from "lucide-react"
 import Link from "next/link"
 import { useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { ScrollAnimationWrapper } from "./scroll-animation-wrapper"
 
 export function Contact() {
   const containerRef = useRef<HTMLElement>(null)
@@ -41,8 +40,10 @@ export function Contact() {
 
       <motion.div className="container mx-auto px-4 relative z-10" style={{ opacity, y }}>
         <div className="max-w-3xl mx-auto text-center text-white">
-          <ScrollAnimationWrapper
-            animationClass="fade-in-scroll"
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
             className="text-4xl md:text-5xl font-serif mb-4"
           >
             ¿Necesitas una{" "}
@@ -51,74 +52,91 @@ export function Contact() {
               <span className="absolute -bottom-2 left-0 w-full h-1 bg-white/40 rounded-full"></span>
             </span>
             ?
-          </ScrollAnimationWrapper>
+          </motion.h2>
 
-          <ScrollAnimationWrapper
-            animationClass="fade-in-scroll"
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="text-white/90 mb-12 max-w-2xl mx-auto"
           >
             Estoy comprometida con el trabajo multidisciplinario y la mejora continua de mis habilidades para ofrecer
             una atención de calidad.
-          </ScrollAnimationWrapper>
+          </motion.p>
 
           <div className="space-y-4 max-w-md mx-auto mb-12">
             {/* Teléfono */}
-            <ScrollAnimationWrapper
-              animationClass="slide-in-left-scroll"
-              className="bg-white/20 backdrop-blur-sm rounded-lg p-4 flex items-center transform transition-all duration-300 hover:scale-[1.03] hover:shadow-lg"
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              whileHover={{ scale: 1.03, boxShadow: "0 10px 25px -5px rgba(0,0,0,0.1)" }}
+              className="bg-white/20 backdrop-blur-sm rounded-lg p-4 flex items-center transform transition-all duration-300"
             >
               <Phone className="h-5 w-5 text-white mr-4" />
               <span className="text-white">+593 99 523 8223</span>
-            </ScrollAnimationWrapper>
+            </motion.div>
 
             {/* Email */}
-            <ScrollAnimationWrapper
-              animationClass="slide-in-left-scroll"
-              className="bg-white/20 backdrop-blur-sm rounded-lg p-4 flex items-center transform transition-all duration-300 hover:scale-[1.03] hover:shadow-lg"
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              whileHover={{ scale: 1.03, boxShadow: "0 10px 25px -5px rgba(0,0,0,0.1)" }}
+              className="bg-white/20 backdrop-blur-sm rounded-lg p-4 flex items-center transform transition-all duration-300"
             >
               <Mail className="h-5 w-5 text-white mr-4" />
               <span className="text-white">lisbetveronik@hotmail.com</span>
-            </ScrollAnimationWrapper>
+            </motion.div>
 
             {/* Ubicación */}
-            <ScrollAnimationWrapper
-              animationClass="slide-in-left-scroll"
-              className="bg-white/20 backdrop-blur-sm rounded-lg p-4 flex items-center transform transition-all duration-300 hover:scale-[1.03] hover:shadow-lg"
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              whileHover={{ scale: 1.03, boxShadow: "0 10px 25px -5px rgba(0,0,0,0.1)" }}
+              className="bg-white/20 backdrop-blur-sm rounded-lg p-4 flex items-center transform transition-all duration-300"
             >
               <MapPin className="h-5 w-5 text-white mr-4" />
               <span className="text-white">Quito, Ecuador - Consulta privada</span>
-            </ScrollAnimationWrapper>
+            </motion.div>
 
             {/* Horario */}
-            <ScrollAnimationWrapper
-              animationClass="slide-in-left-scroll"
-              className="bg-white/20 backdrop-blur-sm rounded-lg p-4 flex items-center transform transition-all duration-300 hover:scale-[1.03] hover:shadow-lg"
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              whileHover={{ scale: 1.03, boxShadow: "0 10px 25px -5px rgba(0,0,0,0.1)" }}
+              className="bg-white/20 backdrop-blur-sm rounded-lg p-4 flex items-center transform transition-all duration-300"
             >
               <Clock className="h-5 w-5 text-white mr-4" />
               <span className="text-white">Horario: Lunes a Viernes 9:00 - 18:00</span>
-            </ScrollAnimationWrapper>
+            </motion.div>
 
             {/* Duración */}
-            <ScrollAnimationWrapper
-              animationClass="slide-in-left-scroll"
-              className="bg-white/20 backdrop-blur-sm rounded-lg p-4 flex items-center transform transition-all duration-300 hover:scale-[1.03] hover:shadow-lg"
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              whileHover={{ scale: 1.03, boxShadow: "0 10px 25px -5px rgba(0,0,0,0.1)" }}
+              className="bg-white/20 backdrop-blur-sm rounded-lg p-4 flex items-center transform transition-all duration-300"
             >
               <Timer className="h-5 w-5 text-white mr-4" />
               <span className="text-white">Duración de sesiones: 45-60 minutos</span>
-            </ScrollAnimationWrapper>
+            </motion.div>
           </div>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <div className="hover:scale-105 active:scale-95 transition-transform">
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href="/agendar"
                 className="bg-white text-[#8BA89B] font-medium py-3 px-6 rounded-lg hover:bg-gray-100 transition-colors inline-block w-full sm:w-auto"
               >
                 Agendar Cita
               </Link>
-            </div>
+            </motion.div>
 
-            <div className="hover:scale-105 active:scale-95 transition-transform">
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href="https://wa.me/593995238223"
                 target="_blank"
@@ -127,7 +145,7 @@ export function Contact() {
               >
                 Contactar por WhatsApp
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
       </motion.div>
