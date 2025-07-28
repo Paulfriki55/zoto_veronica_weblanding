@@ -100,7 +100,7 @@ export function HeroCarousel() {
                     src={slide.image || "/placeholder.svg"}
                     alt={slide.title}
                     fill
-                    className="object-cover opacity-20 transition-transform duration-1000 ease-out"
+                    className="object-cover opacity-40 transition-transform duration-1500 ease-out"
                     priority={index === 0}
                   />
                 </div>

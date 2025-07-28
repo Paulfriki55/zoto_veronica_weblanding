@@ -20,9 +20,10 @@ export function Header() {
   }, [])
 
   const navItems = [
-    { name: "Inicio", href: "#start" },
+    { name: "Inicio", href: "#hero" },
     { name: "Servicios", href: "#about" },
     { name: "Especialidades", href: "#skills" },
+    { name: "Perfil", href: "#start" },
     { name: "Contacto", href: "#contact" },
   ]
 
